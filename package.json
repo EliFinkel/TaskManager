@@ -1,0 +1,27 @@
+{
+  "name": "taskmanager",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon index.js"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "body-parser": "^1.19.0",
+    "cookie-parser": "^1.4.4",
+    "ejs": "^3.0.1",
+    "express": "^4.17.1",
+    "mongodb": "^3.3.4",
+    "mongoose": "^5.7.12",
+    "nodemon": "^1.19.4",
+    "npm": "^6.13.1",
+    "path": "^0.12.7",
+    "promise": "^8.0.3",
+    "pug": "^2.0.4",
+    "react": "^16.12.0",
+    "start": "^5.1.0"
+  }
+}
