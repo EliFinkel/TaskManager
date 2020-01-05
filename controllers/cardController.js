@@ -4,16 +4,18 @@ const cardModel = require('../models/card.js');
 
 
 
-exports.homePage = function (req, res) {
-    
+exports.getOneTask = function (req, res){
+    cardModel.findById(req.params.id, function (err, task) {
+        if (err) return next(err);
+        res.render('update', {task: task});
+        //res.send(product);
+    })
 }
 
 
 
-
-
-exports.createCard = function (req, res) {
-    let card = new cardModel(
+exports.createTask = function (req, res) {
+    let task = new cardModel(
         {
             title: req.body.title,
             description: req.body.description
@@ -27,7 +29,7 @@ exports.createCard = function (req, res) {
         res.redirect('/add')
     }*/
 
-    card.save(function (err) {
+    task.save(function (err) {
         if (err) {
             return next(err);
         }
@@ -62,14 +64,29 @@ exports.deleteTasks = async (req, res) => {
 }
 
 
+exports.updateTask = function (req, res) {
 
-exports.updateTask =  async (req, res) => { 
-    const tasks = await cardModel.findOneAndUpdate();
-    console.log(`Updated ${tasks}`);
-    res.redirect('/');
+    let task = new cardModel(
+        {
+            title: req.body.title,
+            description: req.body.description
+        });
 
+   console.log(req.body);
+    console.log(req.params.id);
+    console.log(req.params);
+   task.findAndModify(req.params.id, {$set: req.body}, function (err, task) {
+
+    if (err) return next(err);
+   // res.send('Product updated.');
+    res.redirect("/");
+
+});
+};
+exports.updateTaskPage = function (req, res){
+    res.render('update');
 }
 
-
-
-
+exports.createTaskPage = function (req, res){
+    res.render('create');
+}

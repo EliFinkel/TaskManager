@@ -28,7 +28,7 @@ mongoose.connect('mongodb+srv://eli:eli16821@card-qxsw8.mongodb.net/test?retryWr
 
 mongoose.Promise = global.Promise;
 
-mongoose.set('useFindAndModify', false);
+mongoose.set('useFindAndModify', true);
 
 
 let db = mongoose.connection;
@@ -50,5 +50,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 let port = 4000;
 
 app.listen(port, () => {
-    console.log('Server is up and running on port numner ' + port);
+    console.log('Server is up and running on port number ' + port);
 });

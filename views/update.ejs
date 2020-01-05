@@ -1,3 +1,4 @@
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -44,30 +45,20 @@
 
 
 <div class="container-fluid bg-3 text-center">    
-    <table>
-        <tr>
-            <th>
-                Name
-            </th>
-            <th>
-                ID
-            </th>
-        </tr>
+    <form action="/<%=task._id%>/update" method="POST" class="ui form">
+
+        <div class="field">
+            <label> Title: </label>
+            <input type="text" name="title" placeholder="title" value='<%=task.title%>'>
+        </div>
+        <div class="field">
+                <label> Descrition: </label>
+                <input type="text" name="description" placeholder="description" value="<%=task.description%>">
+         </div>
     
-    <%tasks.forEach((task)=> {%>
-     
-      <tr>
-        <td>
-            <%=task.title%>
-        </td>
-        <td>
-            <a href='/<%=task._id%>'>Edit</a>
-        </td>
-      
-      </tr>
-    <% })%> 
-    
-    </table>
+        <input type="submit" class="button" value = "delete">
+        <input type="submit" class="button" value = "update">
+    </form>
     
     
     
@@ -82,3 +73,9 @@
 <!-- include partials/script -->
 
 </html>
+
+
+
+
+
+
