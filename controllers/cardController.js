@@ -6,7 +6,7 @@ const cardModel = require('../models/card.js');
 
 exports.getOneTask = function (req, res){
     cardModel.findById(req.params.id, function (err, task) {
-        if (err) return next(err);
+        //if (err) return next(err);
         res.render('update', {task: task});
         //res.send(product);
     })
@@ -75,7 +75,7 @@ exports.updateTask = function (req, res) {
    console.log(req.body);
     console.log(req.params.id);
     console.log(req.params);
-   task.findAndModify(req.params.id, {$set: req.body}, function (err, task) {
+   task.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, task) {
 
     if (err) return next(err);
    // res.send('Product updated.');
