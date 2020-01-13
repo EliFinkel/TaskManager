@@ -58,9 +58,12 @@ exports.getTasks = async (req, res) => {
 
 //Delete all tasks from the database
 exports.deleteTasks = async (req, res) => {
-  res.render("delete.pug");
-  const tasks = await cardModel.deleteMany();
-  console.log("Tasks Deleted");
+    cardModel.findByIdAndRemove(req.params.id, function (err) {
+        if (err) return next(err);
+        //res.send('Deleted successfully!');
+        res.redirect("/");
+
+    })
 }
 
 
@@ -72,10 +75,8 @@ exports.updateTask = function (req, res) {
             description: req.body.description
         });
 
-   console.log(req.body);
-    console.log(req.params.id);
-    console.log(req.params);
-   task.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, task) {
+  
+   cardModel.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, task) {
 
     if (err) return next(err);
    // res.send('Product updated.');

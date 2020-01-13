@@ -15,6 +15,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <meta http-equiv="refresh" content="30">
+
+  
 </head>
 <body>
 
@@ -45,7 +47,7 @@
 
 
 <div class="container-fluid bg-3 text-center">    
-    <form action="/<%=task._id%>/update" method="POST" class="ui form">
+    <form id = "taskForm" action="/<%=task._id%>/update" method="POST" class="ui form">
 
         <div class="field">
             <label> Title: </label>
@@ -56,8 +58,8 @@
                 <input type="text" name="description" placeholder="description" value="<%=task.description%>">
          </div>
     
-        <input type="submit" class="button" value = "delete">
-        <input type="submit" class="button" value = "update">
+        <input id = "DeleteButton" type="submit" class="button" value = "delete">
+        <input id = "UpdateButton" type="submit" class="button" value = "update">
     </form>
     
     
@@ -65,7 +67,19 @@
 </div>
 
 </body>
-
+<script>
+  $("#UpdateButton").click(function() {
+  
+  $("#taskForm").attr('action', "/<%=task._id%>/update");
+  
+  });
+  $("#DeleteButton").click(function() {
+  
+      $("#taskForm").attr('action', "/<%=task._id%>/delete");
+   
+  });
+  
+  </script>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
 <script src="../public/javascripts/menu.js"></script>

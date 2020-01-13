@@ -28,7 +28,7 @@ mongoose.connect('mongodb+srv://eli:eli16821@card-qxsw8.mongodb.net/test?retryWr
 
 mongoose.Promise = global.Promise;
 
-mongoose.set('useFindAndModify', true);
+mongoose.set('useFindAndModify', false);
 
 
 let db = mongoose.connection;
