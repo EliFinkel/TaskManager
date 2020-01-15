@@ -18,8 +18,23 @@
 
     <style>
       table,th,tr,td{
-        padding:5px 5px 5px 5px;
+        padding:5px 5px 10px 10px;
+        font-size: 20px;
+        
+      }
+
+      td{
         border:solid black 1px;
+      }
+      
+      #date{
+        color:red;
+      }
+      #monday, #tuesday{
+        width:300px;
+        height:300px;
+        border:solid black 1px;
+        padding-top: 10px;
       }
       </style>
 </head>
@@ -36,13 +51,14 @@
               <span class="icon-bar"></span>
               <span class="icon-bar"></span>                        
             </button>
-            <a class="navbar-brand" href="#">LOGO</a>
+            <a class="navbar-brand" href="#">Task Manager</a>
           </div>
           <div class="collapse navbar-collapse" id="myNavbar">
             <ul class="nav navbar-nav navbar-right">
               <li id="home"><a href="/">HOME</a></li>
               <li id="add"><a href="/add">CREATE</a></li>
-              <li id="contact"><a href="/contact">CONTACT US</a></li>
+              <li id="page2"><a href="/">CONTACT US</a></li>
+              
             </ul>
           </div>
         </div>
@@ -50,32 +66,45 @@
 
      
 
-
+<!--<div id = "monday"></div>
+<div id = "tuesday"></div>-->
 <div class="container-fluid bg-3 text-center">  
   
   <div align = "center">
     <table>
         <tr>
-            <th>
+            <th >
                 Name
             </th>
-            <th>
+            <th > 
               Description
           </th>
-            <th>
-                ID
-            </th>
+
+          <th>
+            Notes
+        </th>
+
+          <th >
+            Date
+        </th>
+           
         </tr>
     
     <%tasks.forEach((task)=> {%>
      
       <tr>
-        <td>
+        <td id = "name">
             <%=task.title%>
         </td>
-        <td>
+        <td id = "description">
           <%=task.description%>
       </td>
+      <td id = "notes">
+        <%=task.notes%>
+    </td>
+      <td id= "date">
+        <%=task.date%>
+    </td>
         <td>
             <a href='/<%=task._id%>'>Edit</a>
         </td>

@@ -1,5 +1,5 @@
 const cardModel = require('../models/card.js');
-
+const moment = require('moment');
 //Simple version, without validation or sanitation
 
 
@@ -48,7 +48,11 @@ exports.createTask = function (req, res) {
 //Query the database and display saved tasks
 exports.getTasks = async (req, res) => {
   // 1. Query the database for a list of all stores
+  
     const tasks = await cardModel.find();
+    if(tasks.date == moment().startOf('day').fromNow()){
+        tasks.deletMany();
+    }
     res.render('index', {tasks})
 
 
@@ -91,3 +95,4 @@ exports.updateTaskPage = function (req, res){
 exports.createTaskPage = function (req, res){
     res.render('create');
 }
+
