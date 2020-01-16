@@ -93,6 +93,7 @@ exports.updateTaskPage = function (req, res){
 }
 
 exports.createTaskPage = function (req, res){
-    res.render('create');
+    let date = moment().format('dddd');
+    res.render('create', {date});
 }
 
