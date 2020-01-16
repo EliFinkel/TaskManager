@@ -18,13 +18,14 @@
 
     <style>
       table,th,tr,td{
-        padding:5px 5px 10px 10px;
+        
+        padding:5px 70px 10px 10px;
         font-size: 20px;
         
       }
 
-      td{
-        border:solid black 1px;
+      th{
+       text-decoration:underline;   
       }
       
       #date{
@@ -76,8 +77,8 @@
             <th >
                 Name
             </th>
-            <th > 
-              Description
+            <th> 
+              Task
           </th>
 
           <th>
@@ -107,10 +108,9 @@
     </td>
         <td>
             <a href='/<%=task._id%>'>Edit</a>
+            <a href='/<%=task._id%>/delete%>'>Delete</a>
         </td>
-        <td>
-          <a href='/<%=task._id%>/delete%>'>Delete</a>
-      </td>
+    
       
       </tr>
     <% })%> 
