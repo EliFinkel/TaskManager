@@ -53,7 +53,7 @@ exports.getTasks = async (req, res) => {
     if(tasks.date == moment().startOf('day').fromNow()){
         tasks.deletMany();
     }
-    res.render('index', {tasks})
+    res.render('login', {tasks})
 
 
 
@@ -95,5 +95,9 @@ exports.updateTaskPage = function (req, res){
 exports.createTaskPage = function (req, res){
     let date = moment().format('dddd');
     res.render('create', {date});
+}
+
+exports.loginPage = function(req,res){
+    res.render('login');
 }
 

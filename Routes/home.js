@@ -11,6 +11,6 @@ router.post('/:id/delete', cardController.deleteTasks);
 router.get('/:id/delete', cardController.deleteTasks);
 router.post('/:id/update', cardController.updateTask);
 router.get('/:id', cardController.getOneTask);
-
+router.get('/login', cardController.loginPage);
 
 module.exports = router;
