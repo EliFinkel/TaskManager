@@ -33,11 +33,23 @@ exports.createTask = function (req, res) {
         if (err) {
             return next(err);
         }
-        console.log('Task Succesfully Created');
-        res.redirect('/');
-
+        const accountSid = 'AC97874c35dc05a571cd9ce712d46d9361';
+        const authToken = '89db1e88f70122b6c660bd447e8484bc';
+        const client = require('twilio')(accountSid, authToken);
+        
+        client.messages
+          .create({
+             body: `New Task: ${task.title}`,
+             from: '+19384448988',
+             to: '+16102903339'
+           })
+          .then(message => console.log(message.sid));
+        
        
     })
+        console.log('Task Succesfully Created');
+        res.redirect('/');
+    
 };
 
 
@@ -53,7 +65,7 @@ exports.getTasks = async (req, res) => {
     if(tasks.date == moment().startOf('day').fromNow()){
         tasks.deletMany();
     }
-    res.render('login', {tasks})
+    res.render('homePage2', {tasks})
 
 
 

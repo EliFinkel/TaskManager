@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">
+    <meta name="active-menu" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+    <meta http-equiv="refresh" content="30">
+
+    <title>Login</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+        body{
+            font-family: 'Open Sans', sans-serif;
+        }
+        #monday{
+            width:320px;
+            height:300px;
+            background-color: lightblue;
+            border:black solid 1px;
+            display: inline-block;
+            border-radius: 25px;
+
+            
+        }
+        #weekend1{
+            width: 1620px;
+            height:300px;
+            background-color: lightblue;
+            border:black solid 1px;
+            display: inline-block;
+            border-radius: 25px;
+            
+        }
+        table,td,tr,th{
+            padding:10px 10px 10px 10px;
+            font-size: 14px;
+        }
+
+        .edit{
+            color:rgb(235, 74, 74);
+        }
+
+        .weekend{
+            padding-left:100px;
+            padding-right: 100px;
+        }
+     
+
+    
+    </style>
+</head>
+<body>
+
+    <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">Task Manager</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li id="home"><a href="/">HOME</a></li>
+              <li id="add"><a href="/add">CREATE</a></li>
+              <li id="contact"><a href="/">CONTACT US</a></li>
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+
+    <div id = "container" align = "center">
+    <div id = "monday">
+        <b>Monday</b>
+        <br>
+        <br>
+        
+        
+
+        
+       
+
+        
+    
+    </div>
+    <div id = "monday"><b>Tuesday</b><br>
+        <br>
+
+        </div>
+    <div id = "monday"><b>Wednesday</b><br>
+        <br>
+        </div>
+    
+    <div id = "monday"><b>Thursday</b><br>
+        <br>
+        </div>
+    <div id = "monday"><b>Friday</b><br>
+        <br>
+        </div>
+    
+    <div id = "weekend1"><b>Weekend</b>
+    <br>
+    <br>
+    <table class = "weekend">
+        <tr class = "weekend">
+            <th class = "weekend">
+                
+            </th>
+            <th class = "weekend"> 
+              
+          </th>
+
+         
+
+         
+           
+        </tr>
+    
+    <%tasks.forEach((task)=> {%>
+     
+      <tr class = "weekend">
+        <td class = "weekend" id = "name">
+            <%=task.title%>
+        </td>
+        <td class = "weekend" id = "description">
+          <%=task.description%>
+      </td>
+    
+        <td class = "weekend">
+            <a class = "edit" href='/<%=task._id%>'>Edit</a>
+            <a class = "edit" href='/<%=task._id%>/delete%>'>Delete</a>
+        </td class = "weekend">
+    
+      
+      </tr>
+    <% })%> 
+    
+    </table>
+    
+    </div>
+    
+</div>
+</body>
+</html>
