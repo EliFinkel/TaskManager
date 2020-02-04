@@ -10,7 +10,15 @@ let cardSchema = new Schema({
 
     notes: {type: String},
 
-    date: {type: String,default: moment().format('dddd'),required: true}
+    date: {type: String,default: moment().format('dddd'),required: true},
+
+    userId: {type: String, required: true},
+
+    project: {type: String, required: true},
+
+    endDate: {type: String},
+
+    
 });
 
 

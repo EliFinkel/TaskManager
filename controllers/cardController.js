@@ -4,13 +4,13 @@ const moment = require('moment');
 
 
 
-exports.getOneTask = function (req, res){
+/*exports.getOneTask = function (req, res){
     cardModel.findById(req.params.id, function (err, task) {
         //if (err) return next(err);
         res.render('update', {task: task});
         //res.send(product);
     })
-}
+}*/
 
 
 
@@ -39,7 +39,7 @@ exports.createTask = function (req, res) {
         
         client.messages
           .create({
-             body: `New Task: ${task.title}`,
+             body: `New Task From Rutine: ${task.title}.`,
              from: '+19384448988',
              to: '+16102903339'
            })
@@ -49,7 +49,9 @@ exports.createTask = function (req, res) {
     })
         console.log('Task Succesfully Created');
         res.redirect('/');
-    
+
+       
+   
 };
 
 
@@ -65,7 +67,7 @@ exports.getTasks = async (req, res) => {
     if(tasks.date == moment().startOf('day').fromNow()){
         tasks.deletMany();
     }
-    res.render('homePage2', {tasks})
+    res.render('index', {tasks})
 
 
 
@@ -88,18 +90,22 @@ exports.updateTask = function (req, res) {
     let task = new cardModel(
         {
             title: req.body.title,
-            description: req.body.description
+            description: req.body.description,
         });
 
-  
+  console.log(task);
+  console.log(req.params.id);
    cardModel.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, task) {
 
+    console.log(task);  
     if (err) return next(err);
    // res.send('Product updated.');
     res.redirect("/");
 
 });
 };
+
+
 exports.updateTaskPage = function (req, res){
     res.render('update');
 }
@@ -109,7 +115,6 @@ exports.createTaskPage = function (req, res){
     res.render('create', {date});
 }
 
-exports.loginPage = function(req,res){
+exports.getLoginPage = function (req, res){
     res.render('login');
 }
-

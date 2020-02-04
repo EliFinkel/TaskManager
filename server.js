@@ -7,6 +7,8 @@ const moment = require('moment');
 
 const path = require('path');
 
+
+
 //hello world
 
 const routes = require('./Routes/home.js'); // Imports routes for the products
@@ -48,8 +50,28 @@ app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
 
-let port = 4000;
 
+var passport = require('passport');
+var GoogleStrategy = require('passport-google-oauth').OAuthStrategy;
+
+passport.use(new GoogleStrategy({
+  consumerKey: '673316106874-uadmbsdhpnildop9bqqjfiennl3b5lec.apps.googleusercontent.com',
+  consumerSecret: 'HKrsoePGmPWYbqyEZ4Mx9zzw',
+  callbackURL: "http://rutine.herokuapp.com/"
+},
+function(token, tokenSecret, profile, done) {
+    User.findOrCreate({ googleId: profile.id }, function (err, user) {
+      return done(err, user);
+    });
+}
+));
+
+
+
+
+
+let port = process.env.PORT || 8080;
+app.use(express.static(__dirname));
 app.listen(port, () => {
     console.log('Server is up and running on port number ' + port);
 });
