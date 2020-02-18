@@ -4,7 +4,7 @@ const moment = require('moment');
 
 
 let cardSchema = new Schema({
-    title: {type: String},
+    title: {type: String, required:true},
 
     description: {type: String},
 

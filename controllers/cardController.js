@@ -31,7 +31,7 @@ exports.createTask = function (req, res) {
 
     task.save(function (err) {
         if (err) {
-            return next(err);
+            return (err);
         }
         const accountSid = 'AC97874c35dc05a571cd9ce712d46d9361';
         const authToken = '89db1e88f70122b6c660bd447e8484bc';
@@ -48,9 +48,7 @@ exports.createTask = function (req, res) {
        
     })
         console.log('Task Succesfully Created');
-        res.redirect('/');
-
-       
+        res.redirect('/');  
    
 };
 

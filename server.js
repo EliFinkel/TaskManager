@@ -70,7 +70,7 @@ function(token, tokenSecret, profile, done) {
 
 
 
-let port = process.env.PORT || 8080;
+let port = process.env.PORT || 7777;
 app.use(express.static(__dirname));
 app.listen(port, () => {
     console.log('Server is up and running on port number ' + port);
