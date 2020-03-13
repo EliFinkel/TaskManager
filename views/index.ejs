@@ -38,9 +38,15 @@
 <!---->
 
     <style>
-      
-
-   
+  
+   body{
+    background: #ced7db;
+    background: -webkit-linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    background: -o-linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    background: -moz-linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    background: linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    
+   }
       table,th,tr,td{
         
         padding:5px 70px 10px 10px;
@@ -50,7 +56,6 @@
       }
 
      
-
    
       
       #date{
@@ -74,7 +79,13 @@
       background-color: #029a62;
     }
 
-
+    #box{
+      background: #ced7db;
+    background: -webkit-linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    background: -o-linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    background: -moz-linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    background: linear-gradient(left,  #e4f1f6,  #e4f1f6);
+    }
   
       
       </style>
@@ -86,14 +97,18 @@
 <div id = 'container'>
 <nav class="navbar navbar-default" id = "nav">
   <div class="container">
+    
     <div class="navbar-header">
       <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>
         <span class="icon-bar"></span>                        
       </button>
+     
       <a class="navbar-brand" href="#" id = "title">Task Manager</a>
+      
     </div>
+    
     <div class="collapse navbar-collapse" id="myNavbar">
       <ul class="nav navbar-nav navbar-right">
         <li id="home"><a id = "homeBtn" href="/">HOME</a></li>
@@ -158,8 +173,8 @@
           <%=task.date%>
       </td>
           <td>
-              <a href='/<%=task._id%>'>Edit</a>
-              <a href='/<%=task._id%>/delete%>'>Delete</a>
+              <a href='/<%=task._id%>'><em>Edit</em></a>
+              <a href='/<%=task._id%>/delete%>'><em>Delete</em></a>
           </td>
       
         

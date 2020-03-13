@@ -38,6 +38,17 @@
 	color:black;
 }
 
+
+
+body{
+    background: #eaf9ff;
+    background: -webkit-linear-gradient(left, var(backColor),var(backColor));
+    background: -o-linear-gradient(left, var(backColor), var(backColor));
+    background: -moz-linear-gradient(left, var(backColor), var(backColor));
+    background: linear-gradient(left, var(backColor), var(backColor));
+    
+   }
+
 </style>
 
 
@@ -64,10 +75,10 @@
         </div>
       </nav>
 
-	<div class="contact1">
+	<div class="contact1" id = 'mainContent'>
 		<div class="container-contact1">
 			<div class="contact1-pic js-tilt" data-tilt>
-				<img src="images/img-01.png" alt="IMG" width = "800px" height="300px">
+				<img id = "calImg" src="images/img-01.png" alt="IMG" width = "800px" height="300px">
 			</div>
 			<form action="/add" method="POST" class="contact1-form validate-form" id = "form" autocomplete="off">
 		
