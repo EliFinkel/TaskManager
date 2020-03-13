@@ -46,7 +46,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li id="home"><a href="/">HOME</a></li>
               <li id="add"><a href="/add">CREATE</a></li>
-              <li id="contact"><a href="/">CONTACT US</a></li>
+              <li id="page2"><a href="/login">LOGIN</a></li>
             </ul>
           </div>
         </div>
@@ -60,27 +60,27 @@
 
         <div class="field">
             <label> Class: </label>
-            <input type="text" name="title" placeholder="" value=''>
+            <input type="text" name="title" placeholder="" value='' class = "col">
         </div>
         <div class="field">
                 <label> Task: </label>
-                <input type="text" name="description" placeholder="" value=''>
+                <input type="text" name="description" placeholder="" value='' class = "col">
          </div>
 
          <div class="field">
           <label> Date: </label>
           
-          <input type="text" name="date" placeholder="Default is current date" value='<%=date%>'>
+          <input type="text" name="date" placeholder="Default is current date" value='<%=date%>' class = "col">
       </div>
 
 
       <div class="field">
         <label> Notes: </label>
         
-        <input type="text" name="notes" placeholder="" value=''>
+        <input type="text" name="notes" placeholder="" value='' class = "col">
     </div>
     
-        <input type="submit" class="button">
+        <input type="submit" class="btn btn-success">
     
     </form>
     

@@ -4,7 +4,7 @@ const moment = require('moment');
 
 
 let cardSchema = new Schema({
-    title: {type: String, required:true},
+    title: {type: String},
 
     description: {type: String},
 
@@ -12,9 +12,9 @@ let cardSchema = new Schema({
 
     date: {type: String,default: moment().format('dddd'),required: true},
 
-    userId: {type: String, required: true},
+    userId: {type: String, required: false},
 
-    project: {type: String, required: true},
+    project: {type: String, required: false},
 
     endDate: {type: String},
 

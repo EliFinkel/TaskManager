@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+ 
+<!-- include partials/head -->
+
+
+    <title>Your Tasks</title>
+    <meta charset="utf-8">
+    <meta name="active-menu" >
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <link rel="stylesheet" href="./stylesheets/style.css">
+
+    
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+
+    <meta http-equiv="refresh" content="30">
+
+
+    <style>
+   
+      table,th,tr,td{
+        
+        padding:5px 70px 10px 10px;
+        font-size: 20px;
+        
+        
+      }
+
+     
+
+   
+      
+      #date{
+        color:red;
+      }
+      #monday, #tuesday{
+        width:300px;
+        height:300px;
+        border:solid black 1px;
+        padding-top: 10px;
+      }
+
+      #topRow{
+        background-color:black;
+      }
+      *{box-sizing: border-box;margin: 0;padding: 0; outline: none; transition: all 0.3s ease; animation-delay: 0s;}
+
+body {
+  background: #74ebd5;
+  background: -webkit-linear-gradient(to bottom, #74ebd5, #acb6e5);
+  background: linear-gradient(to bottom, #74ebd5, #acb6e5);
+  font-size: 16px;
+  line-height: 1.2;
+  color: #888;
+}
+
+
+	
+
+  
+      </style>
+</head>
+<body>
+
+<!-- include partials/menu -->
+
+  
+  <nav class="navbar navbar-default">
+        <div class="container">
+          <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>
+              <span class="icon-bar"></span>                        
+            </button>
+            <a class="navbar-brand" href="#">Task Manager</a>
+          </div>
+          <div class="collapse navbar-collapse" id="myNavbar">
+            <ul class="nav navbar-nav navbar-right">
+              <li id="home"><a href="/">HOME</a></li>
+              <li id="add"><a href="/add">CREATE</a></li>
+              <li id="page2"><a href="/login">LOGIN</a></li>
+              
+            </ul>
+          </div>
+        </div>
+      </nav>
+
+      <div class="pagewrap">
+        <form class="form" id="form">
+          <h3 class="form__title">Login</h3>
+          <div class="container">
+            <input class="container__input" type="text" id="username" name="username" value="" required>
+            <label id="userLabel" for="username" class="container__label">Username</label>
+          </div>
+          <div class="container">
+            <input class="container__input" type="password" id="pass" name="password" value="" required>
+            <label id="passLabel" for="pass" class="container__label">Password</label>
+          </div>
+          <button class="form__submit" id="submit" type="button" value="submit">Submit</button>
+        </form>
+      </div>
+      <!------ Include the above in your HEAD tag ---------->
+      
+    
+
+</body>
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+<script src="../public/javascripts/menu.js"></script>
+<script>
+function validate() {
+var username = document.getElementById('username').value;
+var password = document.getElementById('pass').value;
+	
+  if (username === "" || username === null) {
+    intensify($('#userLabel'));
+				return false;
+  }
+  
+  if (password === "" || password === null) {
+			 intensify($('#passLabel'));
+				return false;
+  }
+}
+
+function intensify(intense) {
+	intense.addClass('animated shakeit').delay(6000).queue(function(){
+					intense.removeClass('animated shakeit').dequeue();
+				});
+}
+
+function clicked() {
+	$('button').addClass('clicked').delay(200).queue(function(){
+		$('button').removeClass('clicked').dequeue();
+	});
+}
+
+var submit = document.getElementById('submit');
+submit.addEventListener('click', clicked);
+submit.addEventListener('click', validate);
+
+</script>
+
+<!-- include partials/script -->
+
+</html>

@@ -37,7 +37,7 @@
             <ul class="nav navbar-nav navbar-right">
               <li id="home"><a href="/">HOME</a></li>
               <li id="add"><a href="/add">CREATE</a></li>
-              <li id="contact"><a href="/">CONTACT US</a></li>
+              <li id="page2"><a href="/login">LOGIN</a></li>
             </ul>
           </div>
         </div>
@@ -47,7 +47,7 @@
 
 
 <div class="container-fluid bg-3 text-center">    
-    <form id = "taskForm" action="/<%=task.id%>/update" method="POST" class="ui form">
+    <form id = "taskForm" action="/<%=task._id%>/update" method="POST" class="ui form">
 
         <div class="field">
             <label> Class: </label>

@@ -5,28 +5,53 @@
 <!-- include partials/head -->
 
 
-    <title>Your Tasks</title>
+    <title>Rutine - Your Tasks</title>
     <meta charset="utf-8">
     <meta name="active-menu" >
+    <link rel="icon" type="image/ico" href="images/icons/favicon.ico"/>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./stylesheets/style.css">
+    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="vendor/css-hamburgers/hamburgers.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="vendor/select2/select2.min.css">
+    <!--===============================================================================================-->
+      <link rel="stylesheet" type="text/css" href="css/util.css">
+      <link rel="stylesheet" type="text/css" href="css/main.css">
+    
+      <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
+        <link rel="stylesheet" href="./stylesheets/style.css">
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+    <!--===============================================================================================-->
+    
+
+    
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
-    <meta http-equiv="refresh" content="30">
 
+
+    <meta http-equiv="refresh" content="30">
+<!---->
 
     <style>
+      
+
+   
       table,th,tr,td{
         
         padding:5px 70px 10px 10px;
         font-size: 20px;
         
+        
       }
 
-      th{
-       text-decoration:underline;   
-      }
+     
+
+   
       
       #date{
         color:red;
@@ -38,91 +63,116 @@
         padding-top: 10px;
       }
 
+    #title{
+      color:black;
+    }
+
+    #homeBtn, #createBtn, #loginBtn{
+      color:black;
+    }
+    #nav{
+      background-color: #029a62;
+    }
+
+
   
+      
       </style>
 </head>
 <body>
 
 <!-- include partials/menu -->
 
-  
-  <nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="#">Task Manager</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li id="home"><a href="/">HOME</a></li>
-              <li id="add"><a href="/add">CREATE</a></li>
-              <li id="page2"><a href="/">CONTACT US</a></li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
+<div id = 'container'>
+<nav class="navbar navbar-default" id = "nav">
+  <div class="container">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>                        
+      </button>
+      <a class="navbar-brand" href="#" id = "title">Task Manager</a>
+    </div>
+    <div class="collapse navbar-collapse" id="myNavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li id="home"><a id = "homeBtn" href="/">HOME</a></li>
+        <li id="add"><a id = "createBtn" href="/add">CREATE</a></li>
+        <li id="page2"><a id = "loginBtn" href="/login">LOGIN</a></li>
+        
+      </ul>
+    </div>
+  </div>
+</nav>
 
-     
 
-<!--<div id = "monday"></div>
-<div id = "tuesday"></div>-->
-<div class="container-fluid bg-3 text-center">  
-  
-  <div align = "center" id = "grey">
-    <table>
-        <tr>
-            <th >
-                Class
+      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
+      <!------ Include the above in your HEAD tag ---------->
+      
+   
+   
+      
+
+
+    <div class="container-fluid bg-3 text-center" >  
+    
+    <div align = "center" id = "grey">
+      <div id = "box">
+      <table class = "table table-striped">
+          <tr id = "topRow">
+              <th>
+                  Class
+              </th>
+              <th> 
+                Task
             </th>
-            <th> 
-              Task
+
+            <th>
+              Notes
           </th>
 
-          <th>
-            Notes
-        </th>
-
+            <th >
+              Date
+          </th>
+          
           <th >
-            Date
+              
         </th>
-           
-        </tr>
-    
-    <%tasks.forEach((task)=> {%>
-     
-      <tr>
-        <td id = "name">
-            <%=task.title%>
-        </td>
-        <td id = "description">
-          <%=task.description%>
-      </td>
-      <td id = "notes">
-        <%=task.notes%>
-    </td>
-      <td id= "date">
-        <%=task.date%>
-    </td>
-        <td>
-            <a href='/<%=task._id%>'>Edit</a>
-            <a href='/<%=task._id%>/delete%>'>Delete</a>
-        </td>
-    
+          </tr>
       
-      </tr>
-    <% })%> 
-    
-    </table>
-    
+      <%tasks.forEach((task)=> {%>
+      
+        <tr>
+          <td id = "name">
+              <%=task.title%>
+          </td>
+          <td id = "description">
+            <%=task.description%>
+        </td>
+        <td id = "notes">
+          <%=task.notes%>
+      </td>
+        <td id= "date">
+          <%=task.date%>
+      </td>
+          <td>
+              <a href='/<%=task._id%>'>Edit</a>
+              <a href='/<%=task._id%>/delete%>'>Delete</a>
+          </td>
+      
+        
+        </tr>
+      <% })%> 
+      
+      </table>
   </div>
+</div>
     
 </div>
-
+</div>
+</div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
