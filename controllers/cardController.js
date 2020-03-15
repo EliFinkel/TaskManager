@@ -78,6 +78,7 @@ exports.getTasks = async (req, res) => {
     if(tasks.date == moment().startOf('day').fromNow()){
         tasks.deletMany();
     }
+
     res.render('index', {tasks})
 
 

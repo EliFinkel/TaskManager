@@ -7,6 +7,18 @@ const queryString = require('query-string');
 const path = require('path');
 const axios = require('axios');
 
+const { google } = require('googleapis');
+
+//Security Block
+const OAuth2Data = {"web":{"client_id":"55339819676-3ph8pul009u9cm41s753tt3cjengav4k.apps.googleusercontent.com","project_id":"quickstart-1583688064868","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"q4vzHWZt-OSBgfeSKOsvKfNJ","redirect_uris":["http://localhost:8080/auth/google/callback"],"javascript_origins":["http://localhost:8080"]}}
+const CLIENT_ID = OAuth2Data.web.client_id;
+const CLIENT_SECRET = OAuth2Data.web.client_secret;
+const REDIRECT_URL = OAuth2Data.web.redirect_uris;
+
+const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
+var authed = false;
+//End Security Block
+
 
 
 //hello world
