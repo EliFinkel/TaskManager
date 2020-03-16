@@ -38,7 +38,7 @@ exports.createTask = async (req, res) => {
         
         if(task.title == tasks[i].title || task.description == tasks[i].description){
            // alert('That Video Already Exists :');
-            res.redirect('/');
+            res.redirect('/home');
             return;
             
         }
@@ -48,7 +48,7 @@ exports.createTask = async (req, res) => {
         //alert('You Are Missing Something!');
         //res.redirect('/add');
         console.log("Thats empty");
-        res.redirect('/');
+        res.redirect('/home');
         return;
         
     }
@@ -59,7 +59,7 @@ exports.createTask = async (req, res) => {
             return err;
         }
         console.log('Task Succesfully Created');
-        res.redirect('/');
+        res.redirect('/home');
       
     
     });
@@ -91,7 +91,7 @@ exports.deleteTasks = async (req, res) => {
     cardModel.findByIdAndRemove(req.params.id, function (err) {
         if (err) return next(err);
         //res.send('Deleted successfully!');
-        res.redirect("/");
+        res.redirect("/home");
 
     })
 }
@@ -112,7 +112,7 @@ exports.updateTask = function (req, res) {
         console.log(task);  
         if (err) return next(err);
     // res.send('Product updated.');
-        res.redirect("/");
+        res.redirect("/home");
 
     });
 };
@@ -124,7 +124,7 @@ exports.updateTaskPage = function (req, res){
 
 exports.createTaskPage = function (req, res){
     let date = moment().format('dddd');
-    res.render('othermain', {date});
+    res.render('newAdd', {date});
 }
 
 exports.getLoginPage = function (req, res){
@@ -163,3 +163,7 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
     console.log(data); // { access_token, expires_in, token_type, refresh_token }
     return data.access_token;
   };
+
+  exports.getLandingPage = (req,res) => {
+      res.render('landing');
+  }

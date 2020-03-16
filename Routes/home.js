@@ -20,13 +20,13 @@ var authed = false;
 
 router.get('/add', cardController.createTaskPage)
 router.post('/add', cardController.createTask);
-router.get('/', cardController.getTasks);
+router.get('/home', cardController.getTasks);
+router.get('/', cardController.getLandingPage);
 router.post('/:id/delete', cardController.deleteTasks);
 router.get('/:id/delete', cardController.deleteTasks);
 router.post('/:id/update', cardController.updateTask);
 router.get('/logOut', (req,res) => {
     authed = false;
-    console.log('Logged Out');
     res.redirect('/login');
 })
 //TODO fix error
@@ -62,8 +62,8 @@ if (!authed) {
                 console.log('No labels found.');
             }
         });*/
-        res.send('Logged in')
-        res.redirect('/');
+        
+        res.redirect('/home');
 
     }
 })
@@ -80,7 +80,7 @@ router.get('/auth/google/callback', function (req, res) {
                 console.log('Successfully authenticated');
                 oAuth2Client.setCredentials(tokens);
                 authed = true;
-                res.redirect('/')
+                res.redirect('/home')
             }
         });
     }
