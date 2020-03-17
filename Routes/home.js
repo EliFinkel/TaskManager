@@ -25,9 +25,10 @@ router.get('/', cardController.getLandingPage);
 router.post('/:id/delete', cardController.deleteTasks);
 router.get('/:id/delete', cardController.deleteTasks);
 router.post('/:id/update', cardController.updateTask);
+router.get('/settings', cardController.settings);
 router.get('/logOut', (req,res) => {
     authed = false;
-    res.redirect('/login');
+    res.redirect('/');
 })
 //TODO fix error
 //router.get('/:id', cardController.getOneTask);

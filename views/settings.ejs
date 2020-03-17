@@ -146,6 +146,13 @@
 
 /* Change the background color of the dropdown button when the dropdown content is shown */
 .dropdown:hover .dropbtn {background-color: #3e8e41;}
+
+
+
+
+#imgContainer{
+    text-align:center;
+}
   
       
       </style>
@@ -189,75 +196,20 @@
 
  
 </nav>
-
-
-      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-      <!------ Include the above in your HEAD tag ---------->
-      
-   
-   
-      
-
-
-    <div class="container-fluid bg-3 text-center" id = "mainTable">  
+<div id = "imgContainer">
+    <img  src="../img/img_avatar.png" alt="" id = "mainPic">
+    <h1>Name: <%=user.name%></h1>
     
-    <div align = "center" id = "grey">
-      <div id = "box">
-      <table class = "table table-striped">
-          <tr id = "topRow">
-              <th>
-                  Class
-              </th>
-              <th> 
-                Task
-            </th>
+<br>
+<h1>Email: <%=user.email%></h1>
+</div>      
 
-            <th>
-              Notes
-          </th>
 
-            <th >
-              Date
-          </th>
-          
-          <th >
-              
-        </th>
-          </tr>
-      
-      <%tasks.forEach((task)=> {%>
-      
-        <tr>
-          <td id = "name">
-              <%=task.title%>
-          </td>
-          <td id = "description">
-            <%=task.description%>
-        </td>
-        <td id = "notes">
-          <%=task.notes%>
-      </td>
-        <td id= "date">
-          <%=task.date%>
-      </td>
-          <td>
-              <a href='/<%=task._id%>'><em>Edit</em></a>
-              <a href='/<%=task._id%>/delete%>'><em>Delete</em></a>
-          </td>
-      
-        
-        </tr>
-      <% })%> 
-      
-      </table>
-  </div>
-</div>
-    
-</div>
-</div>
-</div>
+
+
+
+
+
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
@@ -267,3 +219,9 @@
 <!-- include partials/script -->
 
 </html>
+   
+
+
+
+    
+    

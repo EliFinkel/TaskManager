@@ -167,3 +167,16 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
   exports.getLandingPage = (req,res) => {
       res.render('landing');
   }
+
+
+  exports.settings = async function (req,res){
+      let userInfo = {
+          name: "Eli Finkel",
+          email: "eligfinkel@gmail.com",
+
+
+      }
+      res.render('settings', {user: userInfo});
+
+
+  }
