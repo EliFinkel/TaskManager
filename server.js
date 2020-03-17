@@ -10,7 +10,8 @@ const axios = require('axios');
 const { google } = require('googleapis');
 
 //Security Block
-const OAuth2Data = {"web":{"client_id":"55339819676-3ph8pul009u9cm41s753tt3cjengav4k.apps.googleusercontent.com","project_id":"quickstart-1583688064868","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"q4vzHWZt-OSBgfeSKOsvKfNJ","redirect_uris":["http://localhost:8080/auth/google/callback"],"javascript_origins":["http://localhost:8080"]}}
+const OAuth2Data = {"web":{"client_id":"930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com","project_id":"rutine","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"DqVuV9IU6jO_bPAXHN0whbd9","redirect_uris":["http://localhost:8080/auth/google/callback"],"javascript_origins":["http://localhost:8080"]}}
+
 const CLIENT_ID = OAuth2Data.web.client_id;
 const CLIENT_SECRET = OAuth2Data.web.client_secret;
 const REDIRECT_URL = OAuth2Data.web.redirect_uris;
@@ -70,5 +71,5 @@ app.use(express.static(path.join(__dirname, 'public')));
 let port = process.env.PORT || 8080;
 app.use(express.static(__dirname));
 app.listen(port, () => {
-    console.log('Server is up and running on port number ' + port);
+    console.log('Server is up and running on port number ' + port + ' :)');
 });

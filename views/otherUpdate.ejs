@@ -57,38 +57,95 @@ body{
 
 
 
+    .dropbtn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px;
+  font-size: 16px;
+  border: none;
+}
+
+/* The container <div> - needed to position the dropdown content */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+/* Dropdown Content (Hidden by Default) */
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background-color: #f1f1f1;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+/* Links inside the dropdown */
+.dropdown-content a {
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+}
+
+/* Change color of dropdown links on hover */
+.dropdown-content a:hover {background-color: #ddd;}
+
+/* Show the dropdown menu on hover */
+.dropdown:hover .dropdown-content {display: block;}
+
+/* Change the background color of the dropdown button when the dropdown content is shown */
+.dropdown:hover .dropbtn {background-color: #3e8e41;}
+  
+
+
 </style>
 
 
 </head>
 <body>
-	<nav class="navbar navbar-default">
-        <div class="container">
-          <div class="navbar-header">
-            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>                        
-            </button>
-            <a class="navbar-brand" href="/" id = "title">Rutine</a>
-          </div>
-          <div class="collapse navbar-collapse" id="myNavbar">
-            <ul class="nav navbar-nav navbar-right">
-              <li id="home"><a id = "homeBtn" href="/home">HOME</a></li>
-              <li id="add"><a id = "createBtn" href="/add">CREATE</a></li>
-			  <li id="page2"><a id = "logOutBtn" href="/logOut">LOG OUT</a></li>
-              
-            </ul>
-          </div>
-        </div>
-      </nav>
+	<nav class="navbar navbar-default" id = "nav">
+		<div class="container">
+		  
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>                        
+			</button>
+		   
+			<a class="navbar-brand" href="/" id = "title">Rutine</a>
+			
+		  </div>
+		  
+		  <div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-right">
+			  <li id="home"><a id = "homeBtn" href="/home">home</a></li>
+			  <li id="add"><a id = "createBtn" href="/add">add task</a></li>
+			  
+			  <div class="dropdown">
+				<li ><img id="profileImg" src="../img/img_avatar.png" alt="Avatar" width = "50px" height = "50px"></li>
+				<div class="dropdown-content">
+				  <a href="/settings">settings</a>
+				  <a href="/logOut">log Out</a>
+				  
+				</div>
+			  </div>
+			  
+			</ul>
+		  </div>
+		</div>
+	  
+	   
+	  </nav>
 
 	<div class="contact1">
 		<div class="container-contact1">
 			<div class="contact1-pic js-tilt" data-tilt>
 				<img src="images/img-01.png" alt="IMG">
 			</div>
-			<form id = "taskForm" action="/<%=task._id%>/update" method="POST" class="ui form" autocomplete="off">
+			<form id = "taskForm" action='/<%=task._id%>/update' method="POST" class="ui form" autocomplete="off">
 		
 				<span class="contact1-form-title">
 					Update Task

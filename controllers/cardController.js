@@ -2,6 +2,7 @@ const cardModel = require('../models/card.js');
 const moment = require('moment');
 const axios = require('axios');
 const queryString = require('query-string');
+const router = require('../Routes/home.js');
 
 //Simple version, without validation or sanitation
 
@@ -29,7 +30,8 @@ exports.createTask = async (req, res) => {
         {
             title: req.body.title,
             description: req.body.description,
-            notes: req.body.notes
+            notes: req.body.notes,
+            dueDate: req.body.dueDate
         }
     );
 
@@ -52,6 +54,10 @@ exports.createTask = async (req, res) => {
         return;
         
     }
+
+   
+    
+    
 
     task.save(function (err) {
         if (err) {
@@ -78,8 +84,11 @@ exports.getTasks = async (req, res) => {
     if(tasks.date == moment().startOf('day').fromNow()){
         tasks.deletMany();
     }
-
     res.render('index', {tasks})
+
+
+    
+    
 
 
 

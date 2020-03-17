@@ -1149,7 +1149,7 @@ h3 {
 
 /* line 4, ../../Arafath/CL/December/233. Startup/HTML/scss/_slider.scss */
 .slider_bg_2 {
-  background-image: url(../img/banner/banner2.png);
+  background-image: url(../img/banner/banner.png);
 }
 
 /* line 9, ../../Arafath/CL/December/233. Startup/HTML/scss/_slider.scss */
@@ -1178,7 +1178,7 @@ h3 {
 
 /* line 23, ../../Arafath/CL/December/233. Startup/HTML/scss/_slider.scss */
 .slider_area .single_slider.about_banner.overlay::before {
-  opacity: .5;
+  opacity: .2;
 }
 
 /* line 27, ../../Arafath/CL/December/233. Startup/HTML/scss/_slider.scss */

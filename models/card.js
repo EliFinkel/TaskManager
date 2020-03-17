@@ -16,7 +16,7 @@ let cardSchema = new Schema({
 
     project: {type: String, required: false},
 
-    endDate: {type: String},
+    dueDate: {type: String, required: false, default: "No Date"}, 
 
     
 });
