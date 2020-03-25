@@ -14,9 +14,15 @@ let cardSchema = new Schema({
 
     userId: {type: String, required: false},
 
+    emailId: {type: String, required: false},
+
     project: {type: String, required: false},
 
-    dueDate: {type: String, required: false, default: "No Date"}, 
+    dueDate: {type: String, default: "No Date", required: false}, 
+
+    completed: {type: Boolean, default: false},
+
+    status: {type: String, default: "Working On It", required: true}
 
     
 });

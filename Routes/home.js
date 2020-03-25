@@ -21,25 +21,21 @@ var authed = false;
 
 router.get('/add', cardController.createTaskPage)
 router.post('/add', cardController.createTask);
-
-    router.get('/home', cardController.getTasks);
-
-
-
-
-
-
+router.get('/home', cardController.getTasks);
 router.get('/', cardController.getLandingPage);
 router.post('/:id/delete', cardController.deleteTasks);
 router.get('/:id/delete', cardController.deleteTasks);
+router.get('/:id/update', cardController.getTask);
 router.post('/:id/update', cardController.updateTask);
 router.get('/settings', cardController.settings);
 router.get('/logOut', (req,res) => {
     authed = false;
     res.redirect('/');
 })
+
+router.get('/projects', cardController.getProjectView);
 //TODO fix error with id
-//!router.get('/:id', cardController.getOneTask);
+
 
 
 
@@ -72,7 +68,7 @@ if (!authed) {
             }
         });*/
         
-        res.redirect('/home');
+        //res.redirect('/home');
 
     }
 })
@@ -88,12 +84,34 @@ router.get('/auth/google/callback', function (req, res) {
             } else {
                 console.log('Successfully authenticated');
                 oAuth2Client.setCredentials(tokens);
+                
+
                 authed = true;
+                var date = new Date();
+                sendMessage(`You Logged into Rutine at ${date}`)
                 res.redirect('/home')
             }
         });
     }
 });
+
+
+
+function sendMessage(userMessage){
+    const accountSid = 'AC97874c35dc05a571cd9ce712d46d9361';
+    const authToken = '89db1e88f70122b6c660bd447e8484bc';
+    const client = require('twilio')(accountSid, authToken);
+
+    client.messages
+    .create({
+        body: userMessage,
+        from: '+19384448988',
+        to: '+16102903339'
+    })
+    .then(message => console.log(message.sid));
+
+
+}
 
 
 

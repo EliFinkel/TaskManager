@@ -22,6 +22,7 @@
     <!--===============================================================================================-->
       <link rel="stylesheet" type="text/css" href="css/util.css">
       <link rel="stylesheet" type="text/css" href="css/main.css">
+      <link rel="stylesheet" type = "text/css" href="css/myCss.css">
     
       <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
         <link rel="stylesheet" href="./stylesheets/style.css">
@@ -45,10 +46,6 @@
     background: -o-linear-gradient(left, #c5f4ff, #c5f4ff);
     background: -moz-linear-gradient(left, #c5f4ff, #c5f4ff);
     background: linear-gradient(left, #c5f4ff, #c5f4ff);
-
-    padding-top:0px;
-	padding-left: 0px;
-	padding-right: 0px;
     
    }
       table,th,tr,td{
@@ -172,24 +169,10 @@
   color:black;
 }
 
-#status{
-  color:#029a62;
-}
 
 
-#addOnBottom{
-  height:50px;
-  background-color:#029a62;
 
-}
 
-#addText{
-  padding:10px 10px 10px 10px;
-}
-
-#addLink{
-  color:blue;
-}
 
       
       </style>
@@ -209,7 +192,7 @@
           <span class="icon-bar"></span>                        
         </button>
        
-        <a class="navbar-brand" href="/logout" id = "title">Rutine</a>
+        <a class="navbar-brand" href="/" id = "title">Rutine</a>
         
       </div>
       
@@ -233,111 +216,21 @@
   
    
   </nav>
-
-      <link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
-      <script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
-      <script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
-      <!------ Include the above in your HEAD tag ---------->
-      
-   
-   
-      
-
-
-    <div class="container-fluid bg-3 text-center" id = "mainTable">  
-    
-    <div align = "center" id = "grey">
-      <div id = "box">
-      <table class = "table table-striped">
-       
-          <tr id = "topRow">
-              <th class = "top">
-                  Class
-              </th>
-              <th class = "top"> 
-                Task
-            </th>
-
+    <div id = "projectContainer">
+        <div class = "project">Project Name</div>
+        <div class = "project">Project Name</div>
+        <div class = "project">Project Name</div>
+        <div class = "project">Project Name</div>
+        <div class = "project">Project Name
             
+            
+        </div>
+    </div>
 
-            <th class = "top">
-              Date
-          </th>
 
-          <th class = "top">
-            Due Date
-        </th>
 
-        <th class = "top">
-          Status
-      </th>
 
       
-          
-          <th class = "top">
-              
-        </th>
-
-    
-          </tr>
-    
-      
-      <%tasks.forEach((task)=> {%>
-
-      
-        <tr>
-          <td id = "name">
-              <%=task.title%>
-          </td>
-          <td id = "description">
-            <%=task.description%>
-        </td>
-        
-        <td id= "date">
-          <%=task.date%>
-      </td>
-
-      <td id= "dueDate">
-        <%=task.dueDate%>
-    </td>
-
-    <td id= "dueDate">
-      <form action="/home">
-      <select id="status" name="status" for = "status" onchange="this.form.submit()">
-        <option id="WorkingOnIt">Working On It</option>
-        <option id="Stuck">Stuck</option>
-        <option id="Completed">Completed</option>
-        
-      </select>
-
-
-    </form>
-    
-  </td>
-
-    <td>
-      <a href='/<%=task._id%>/update'><em>Edit</em></a>
-      <a href='/<%=task._id%>/delete%>'><em>Delete</em></a>
-  </td>
-
-        
-      
-        
-        </tr>
-      <% })%> 
-      
-      </table>
-
-      <!--<div id = "addOnBottom">
-        <h3 id = "addText"><a id = "addLink" href = >Add Task</a></h3>
-
-      </div>-->
-  </div>
-</div>
-    
-</div>
-</div>
-</div>
 </body>
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>

@@ -1,0 +1,15 @@
+.project{
+    width:300px;
+    height: 300px;
+    border:2px black solid;
+    display: inline-block;
+    position: relative;
+    margin-left: 0em;
+    margin-right: 0em;
+    text-align:center;
+   
+}
+
+#projectContainer{
+    padding-top: 80px;
+}

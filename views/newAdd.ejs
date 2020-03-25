@@ -5,11 +5,11 @@
 	<meta charset="UTF-8">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 <!--===============================================================================================-->
-	<link rel="icon" type="image/png" href="images/icons/favicon.ico"/>
+	<link rel="icon" type="image/png" href="../images/icons/favicon.ico"/>
 <!--===============================================================================================-->
 	<!--<link rel="stylesheet" type="text/css" href="vendor/bootstrap/css/bootstrap.min.css">
 <!--===============================================================================================-->
-	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="../fonts/font-awesome-4.7.0/css/font-awesome.min.css">
 <!--===============================================================================================-->
 	<link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
 <!--===============================================================================================-->
@@ -41,11 +41,15 @@
 
 
 body{
-    background: #eaf9ff;
-    background: -webkit-linear-gradient(left, var(backColor),var(backColor));
-    background: -o-linear-gradient(left, var(backColor), var(backColor));
-    background: -moz-linear-gradient(left, var(backColor), var(backColor));
-    background: linear-gradient(left, var(backColor), var(backColor));
+	background: #91c9d5;
+    background: -webkit-linear-gradient(left, #c5f4ff,#c5f4ff);
+    background: -o-linear-gradient(left, #c5f4ff, #c5f4ff);
+    background: -moz-linear-gradient(left, #c5f4ff, #c5f4ff);
+	background: linear-gradient(left, #c5f4ff, #c5f4ff);
+	
+	padding-top:0px;
+	padding-left: 0px;
+	padding-right: 0px;
     
    }
 
@@ -123,7 +127,7 @@ body{
 			  <span class="icon-bar"></span>                        
 			</button>
 		   
-			<a class="navbar-brand" href="/" id = "title">Rutine</a>
+			<a class="navbar-brand" href="/logout" id = "title">Rutine</a>
 			
 		  </div>
 		  
@@ -151,7 +155,7 @@ body{
 	<div class="contact1" id = 'mainContent'>
 		<div class="container-contact1">
 			<div class="contact1-pic js-tilt" data-tilt>
-				<img id = "calImg" src="images/img-01.png" alt="IMG" width = "800px" height="300px">
+				<img id = "calImg" src="../images/img-01.png" alt="IMG" width = "800px" height="300px">
 			</div>
 			<form action="/add" method="POST" class="contact1-form validate-form" id = "form" autocomplete="off">
 		

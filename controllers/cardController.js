@@ -3,26 +3,22 @@ const moment = require('moment');
 const axios = require('axios');
 const queryString = require('query-string');
 const router = require('../Routes/home.js');
+const { google } = require('googleapis');
+const OAuth2Data = {"web":{"client_id":"930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com","project_id":"rutine","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"DqVuV9IU6jO_bPAXHN0whbd9","redirect_uris":["http://localhost:8080/auth/google/callback"],"javascript_origins":["http://localhost:8080"]}};
 
-//Simple version, without validation or sanitation
+const CLIENT_ID = OAuth2Data.web.client_id;
+const CLIENT_SECRET = OAuth2Data.web.client_secret;
+const REDIRECT_URL = OAuth2Data.web.redirect_uris;
+
+const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
+var authed = false;
 
 
 
-exports.getOneTask = function (req, res){
-    
-    
-    
-    cardModel.findById(req.params.id, function (err, task) {
 
-   
-        //if (err) return next(err);
-       // console.log(`The task is ${task}`);
-        res.render('otherUpdate', {task});
-        //res.send(task);
-    });
-}
 
-//hello
+
+
 
 
 exports.createTask = async (req, res) => {
@@ -31,7 +27,10 @@ exports.createTask = async (req, res) => {
             title: req.body.title,
             description: req.body.description,
             notes: req.body.notes,
-            dueDate: req.body.dueDate
+            dueDate: req.body.dueDate,
+            status: req.body.status,
+            emailId: "eligfinkel@gmail.com"
+
         }
     );
 
@@ -79,18 +78,22 @@ exports.createTask = async (req, res) => {
 //Query the database and display saved tasks
 exports.getTasks = async (req, res) => {
   // 1. Query the database for a list of all stores
+  const tasks = await cardModel.find();
+  var authedTasks = [];
   
-    const tasks = await cardModel.find();
-    if(tasks.date == moment().startOf('day').fromNow()){
-        tasks.deletMany();
-    }
+    
+   for(var i = 0; i < tasks.length; i++){
+       if(tasks[i].emailId == 'eligfinkel@gmail.com'){
+            authedTasks.push(tasks[i]);
+            //console.log(authedTasks);
+       }
+       
+   }
+   //const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
+   //console.log('Your gmail ' + gmail);
     res.render('index', {tasks})
-
-
     
     
-
-
 
 }
 
@@ -105,6 +108,19 @@ exports.deleteTasks = async (req, res) => {
     })
 }
 
+exports.getTask = function (req, res){
+    
+    
+    
+    cardModel.findById(req.params.id, function (err, task) {
+        //if (err) return next(err);
+       // console.log(`The task is ${task}`);
+        let date = moment().format('dddd');
+        console.log(task);
+        res.render('otherUpdate', {task, date});
+        //res.send(task);
+    });
+}
 
 exports.updateTask = function (req, res) {
 
@@ -112,6 +128,9 @@ exports.updateTask = function (req, res) {
         {
             title: req.body.title,
             description: req.body.description,
+            notes: req.body.notes,
+            dueDate: req.body.dueDate,
+            status: req.body.status
         });
 
     console.log(task);
@@ -127,8 +146,9 @@ exports.updateTask = function (req, res) {
 };
 
 
-exports.updateTaskPage = function (req, res){
-    res.render('update');
+exports.updateTaskPage = async (req, res) => {
+    const task = await cardModel.find();
+    res.render('otherUpdate');
 }
 
 exports.createTaskPage = function (req, res){
@@ -189,3 +209,29 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
 
 
   }
+
+
+  exports.getProjectView = function (req, res){
+        res.render('projetcsView');
+  }
+
+
+/*exports.sendReminder = (req,res) => {
+   
+}*/
+
+function sendMessage(userMessage){
+    const accountSid = 'AC97874c35dc05a571cd9ce712d46d9361';
+    const authToken = '89db1e88f70122b6c660bd447e8484bc';
+    const client = require('twilio')(accountSid, authToken);
+
+    client.messages
+    .create({
+        body: userMessage,
+        from: '+19384448988',
+        to: '+16102903339'
+    })
+    .then(message => console.log(message.sid));
+
+
+}
