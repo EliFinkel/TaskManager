@@ -1,17 +1,20 @@
 const cardModel = require('../models/card.js');
+const express = require('express');
 const moment = require('moment');
 const axios = require('axios');
 const queryString = require('query-string');
 const router = require('../Routes/home.js');
 const { google } = require('googleapis');
 const OAuth2Data = {"web":{"client_id":"930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com","project_id":"rutine","auth_uri":"https://accounts.google.com/o/oauth2/auth","token_uri":"https://oauth2.googleapis.com/token","auth_provider_x509_cert_url":"https://www.googleapis.com/oauth2/v1/certs","client_secret":"DqVuV9IU6jO_bPAXHN0whbd9","redirect_uris":["http://localhost:8080/auth/google/callback"],"javascript_origins":["http://localhost:8080"]}};
-
+const cookieParser = require('cookie-parser');
+const cookieSession = require('cookie-session');
 const CLIENT_ID = OAuth2Data.web.client_id;
 const CLIENT_SECRET = OAuth2Data.web.client_secret;
 const REDIRECT_URL = OAuth2Data.web.redirect_uris;
 
 const oAuth2Client = new google.auth.OAuth2(CLIENT_ID, CLIENT_SECRET, REDIRECT_URL)
 var authed = false;
+//var userEmail = "";
 
 
 
@@ -22,6 +25,8 @@ var authed = false;
 
 
 exports.createTask = async (req, res) => {
+    var cookieString = req.headers.cookie;
+    var email = extractCookieValue(cookieString, "securityContextId");
     let task = new cardModel(
         {
             title: req.body.title,
@@ -29,7 +34,7 @@ exports.createTask = async (req, res) => {
             notes: req.body.notes,
             dueDate: req.body.dueDate,
             status: req.body.status,
-            emailId: "eligfinkel@gmail.com"
+            emailId: email
 
         }
     );
@@ -71,31 +76,68 @@ exports.createTask = async (req, res) => {
 };
 
 
+//userContextId
 
+function extractCookieValue(cookieString, cookieName){
 
+    var pos = cookieString.indexOf(cookieName + "=");
+    var pos2 = cookieString.indexOf(";", pos);
+    var value = "";
+    //console.log("p1: " + pos + " p2: " + pos2 + " cookieString: " + cookieString);
+    
+
+    if(pos >= 0 && pos2 == -1){
+        pos = pos + cookieName.length + 1;
+        value = cookieString.substring(pos);
+        //console.log("value: " + value);
+    }
+    else if(pos >= 0 && pos2 >= 0){
+        pos = pos + cookieName.length + 1;
+        value = cookieString.substring(pos,pos2);
+        
+        
+    }
+
+    
+
+    return value;
+}
 
 
 //Query the database and display saved tasks
 exports.getTasks = async (req, res) => {
-  // 1. Query the database for a list of all stores
-  const tasks = await cardModel.find();
-  var authedTasks = [];
-  
-    
-   for(var i = 0; i < tasks.length; i++){
-       if(tasks[i].emailId == 'eligfinkel@gmail.com'){
-            authedTasks.push(tasks[i]);
-            //console.log(authedTasks);
-       }
-       
-   }
-   //const gmail = google.gmail({ version: 'v1', auth: oAuth2Client });
-   //console.log('Your gmail ' + gmail);
-    res.render('index', {tasks})
+    var cookieString = req.headers.cookie;
+    /*var pos = cookieString.indexOf("securityContextId=");
+    var pos2 = cookieString.indexOf(".com");
+    var email = "";
     
     
-
+    if(pos >= 0 && pos2 >= 0){
+        email = cookieString.substring(pos + "securityContextId=".length, pos2 + 4);
+        userEmail = email;
+        
+    }*/
+    var email = extractCookieValue(cookieString, "securityContextId");
+    console.log("Email: " + email);
+    //console.log("Email: " + email); 
+    
+    if(email == null || email.length < 10){
+        res.redirect('/')
+        console.log("Something is wrong with your email!")
+    }
+    else{
+        
+        const tasks = await cardModel.find({emailId:  email});
+    
+        res.render('index', {tasks});
+    }
+    
+        
 }
+    
+ 
+
+
 
 
 //Delete all tasks from the database
@@ -219,6 +261,9 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
 /*exports.sendReminder = (req,res) => {
    
 }*/
+
+
+
 
 function sendMessage(userMessage){
     const accountSid = 'AC97874c35dc05a571cd9ce712d46d9361';

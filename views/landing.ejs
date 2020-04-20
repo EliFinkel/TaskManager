@@ -13,6 +13,12 @@
     <!-- Place favicon.ico in the root directory -->
 
     <!-- CSS here -->
+    
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <link rel="stylesheet" href="css/bootstrap.min.css">
     <link rel="stylesheet" href="css/owl.carousel.min.css">
     <link rel="stylesheet" href="css/magnific-popup.css">
@@ -25,7 +31,54 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
-
+    <script>
+        function setCookie(name, value, exp){
+          var expires = "";
+          if (exp) {
+            var date = new Date();
+            date.setTime(date.getTime() + (exp * 1000 * 60));
+            expires = "; expires=" + date.toUTCString();
+          }
+          document.cookie = name + "=" + (value || "") + expires + "; path=/";
+        }
+  
+        function getCookie(name) {
+          var nameEQ = name + "=";
+          var ca = document.cookie.split(';');
+          for (var i = 0; i < ca.length; i++) {
+            var c = ca[i];
+            while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+            if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+          }
+          return null;
+        }
+  
+  
+  
+        function onSignIn(googleUser) {
+          
+          var profile = googleUser.getBasicProfile();
+          console.log('User Info:');
+          console.log(profile.getEmail());
+          console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+          console.log('Name: ' + profile.getName());
+          console.log('Image URL: ' + profile.getImageUrl());
+          console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.\
+          setCookie('securityContextId', profile.getEmail(), 20);
+          //Client Side
+          
+  
+      }
+  
+      function signOut() {
+        var auth2 = gapi.auth2.getAuthInstance();
+        auth2.signOut().then(function () {
+        console.log('User signed out.');
+        setCookie('securityContextId', '', 0)
+        });
+  
+      } 
+    </script>
     <style>
         #logoText{
             color:blue;
@@ -35,6 +88,11 @@
             text-decoration: underline;
             text-decoration-color: #029a62;
             color:#ab374a;
+        }
+
+        #signOut{
+            height:36px;
+            background-color:white;
         }
 
     </style>
@@ -65,7 +123,7 @@
                             <div class="main-menu  d-none d-lg-block text-center">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="/">home</a></li>
+                                        <li><a class="active" href="/home">home</a></li>
                                         <li><a href="#about">about</a></li>
                                         <li><a href="#contact">contact</a></li>
                                 
@@ -75,8 +133,11 @@
                         </div>
                         <div class="col-lg-2 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-end">
-                                <a href="/login" data-scroll-nav="0" class="say_hi">Login With Google</a>
+                                <!--<a href="/newLogin" data-scroll-nav="0" class="say_hi">Login With Google</a>-->
+                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
+                                <button id = "signOut" onclick="signOut()">SignOut</button>
                             </div>
+                            
                         </div>
                         <div class="col-12">
                             <div class="mobile_menu d-block d-lg-none"></div>

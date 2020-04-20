@@ -30,6 +30,7 @@ router.post('/:id/update', cardController.updateTask);
 router.get('/settings', cardController.settings);
 router.get('/logOut', (req,res) => {
     authed = false;
+    console.log(req.headers.cookie);
     res.redirect('/');
 })
 
@@ -38,11 +39,14 @@ router.get('/projects', cardController.getProjectView);
 
 
 
-
+router.get('/newLogin', (req, res) => {
+    res.render('login');
+})
 
 
 
 router.get('/login', (req, res) => {
+    
 if (!authed) {
         // Generate an OAuth URL and redirect there
         const url = oAuth2Client.generateAuthUrl({
@@ -89,6 +93,8 @@ router.get('/auth/google/callback', function (req, res) {
                 authed = true;
                 var date = new Date();
                 sendMessage(`You Logged into Rutine at ${date}`)
+                console.log(tokens);
+                console.log(code);
                 res.redirect('/home')
             }
         });

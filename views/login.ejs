@@ -2,16 +2,72 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
+    
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
     <title>Login</title>
+    <script>
+      function setCookie(name, value, exp){
+        var expires = "";
+        if (exp) {
+          var date = new Date();
+          date.setTime(date.getTime() + (exp * 1000 * 60));
+          expires = "; expires=" + date.toUTCString();
+        }
+        document.cookie = name + "=" + (value || "") + expires + "; path=/";
+      }
+
+      function getCookie(name) {
+        var nameEQ = name + "=";
+        var ca = document.cookie.split(';');
+        for (var i = 0; i < ca.length; i++) {
+          var c = ca[i];
+          while (c.charAt(0) == ' ') c = c.substring(1, c.length);
+          if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
+        }
+        return null;
+      }
+
+
+
+      function onSignIn(googleUser) {
+        
+        var profile = googleUser.getBasicProfile();
+        console.log('User Info:');
+        console.log(profile.getEmail());
+        console.log('ID: ' + profile.getId()); // Do not send to your backend! Use an ID token instead.
+        console.log('Name: ' + profile.getName());
+        console.log('Image URL: ' + profile.getImageUrl());
+        console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.\
+        setCookie('securityContextId', profile.getEmail(), 20);
+        //Client Side
+        alert("User Cookie Info: " + getCookie('securityContextId'));
+
+    }
+
+    function signOut() {
+      var auth2 = gapi.auth2.getAuthInstance();
+      auth2.signOut().then(function () {
+      console.log('User signed out.');
+      setCookie('securityContextId', '', 0)
+      });
+
+    } 
+  </script>
 </head>
 <body>
+  <div class="g-signin2" data-onsuccess="onSignIn"></div>
     <h1>Login Here</h1>
-    return (
-  <a href=<%=googleLoginUrl%></a>}>
+ 
     Login with Google
-  </a>
-);
+  
+
+
+<a href="#" onclick="signOut()">Sign out</a>
+<br>
+<a href="/home">Home</a>
+
 </body>
 </html>

@@ -28,4 +28,4 @@ let cardSchema = new Schema({
 });
 
 
-module.exports = mongoose.model('Card', cardSchema);
+module.exports = mongoose.model('Task', cardSchema);
