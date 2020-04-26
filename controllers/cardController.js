@@ -107,16 +107,8 @@ function extractCookieValue(cookieString, cookieName){
 //Query the database and display saved tasks
 exports.getTasks = async (req, res) => {
     var cookieString = req.headers.cookie;
-    /*var pos = cookieString.indexOf("securityContextId=");
-    var pos2 = cookieString.indexOf(".com");
-    var email = "";
-    
-    
-    if(pos >= 0 && pos2 >= 0){
-        email = cookieString.substring(pos + "securityContextId=".length, pos2 + 4);
-        userEmail = email;
-        
-    }*/
+
+    console.log("CookieString: " + cookieString);
     var email = extractCookieValue(cookieString, "securityContextId");
     console.log("Email: " + email);
     //console.log("Email: " + email); 
@@ -241,9 +233,11 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
 
 
   exports.settings = async function (req,res){
-      let userInfo = {
-          name: "Eli Finkel",
-          email: "eligfinkel@gmail.com",
+      
+    var cookieString = req.headers.cookie;
+    var email = extractCookieValue(cookieString, "securityContextId");
+    let userInfo = {
+          email: email
 
 
       }

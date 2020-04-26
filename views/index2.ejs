@@ -12,7 +12,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
     <link rel="stylesheet" href="./stylesheets/style.css">
-    <link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link rel="stylesheet" type="text/css" href="fonts/font-awesome-4.7.0/css/font-awesome.min.css">
+	<link href="//netdna.bootstrapcdn.com/bootstrap/3.0.0/css/bootstrap.min.css" rel="stylesheet" id="bootstrap-css">
+	<script src="//netdna.bootstrapcdn.com/bootstrap/3.0.0/js/bootstrap.min.js"></script>
+	<script src="//code.jquery.com/jquery-1.11.1.min.js"></script>
     <!--===============================================================================================-->
       <link rel="stylesheet" type="text/css" href="vendor/animate/animate.css">
     <!--===============================================================================================-->
@@ -47,7 +50,17 @@
       } 
 </script>
     <style>
-  
+  .custab{
+    border: 1px solid #ccc;
+    padding: 5px;
+    margin: 5% 0;
+    box-shadow: 3px 3px 2px #ccc;
+    transition: 0.5s;
+    }
+.custab:hover{
+    box-shadow: 3px 3px 0px transparent;
+    transition: 0.5s;
+    }
    body{
     background: #91c9d5;
     background: -webkit-linear-gradient(left, #c5f4ff,#c5f4ff);
@@ -118,7 +131,7 @@
     }
 
     #mainTable{
-      background: #91c9d5;
+    background: #91c9d5;
     background: -webkit-linear-gradient(left, #c5f4ff,#c5f4ff);
     background: -o-linear-gradient(left, #c5f4ff, #c5f4ff);
     background: -moz-linear-gradient(left, #c5f4ff, #c5f4ff);
@@ -200,6 +213,7 @@
   color:blue;
 }
 
+
       
       </style>
 </head>
@@ -257,83 +271,39 @@
     
     <div align = "center" id = "grey">
       <div id = "box"></div>
-      <table class = "table">
-       
-          <tr id = "topRow">
-
-            <th class = "top"> 
-              Task
-          </th>
-              <th class = "top"></th>
-                  
-              
-              
-
-            
-
-            
-
-          <th class = "top"></th>
-            
-        
-
-        <th class = "top"></th>
-
-      
-          
-          <th class = "top"></th>
-              
-        
-
-    
-          </tr>
-    
-      
-      <%tasks.forEach((task)=> {%>
-
-        <tr>
-        <td id = "description">
-          <%=task.description%>
-      </td>
-
-       
-          <td id = "name">
-              <%=task.title%>
-          </td>
-          
-        
-       
-
-      <td id= "dueDate">
-        <%=task.dueDate%>
-    </td>
-
-    <td id= "dueDate">
-      <form action="/home">
-      <select id="status" name="status" for = "status" onchange="this.form.submit()">
-        <option id="WorkingOnIt">Working On It</option>
-        <option id="Stuck">Stuck</option>
-        <option id="Completed">Completed</option>
-        
-      </select>
-
-
-    </form>
-    
-  </td>
-
-    <td>
-      <a href='/<%=task._id%>/update'><em>Edit</em></a>
-      <a href='/<%=task._id%>/delete%>'><em>Delete</em></a>
-  </td>
-
-        
-      
-        
-        </tr>
-      <% })%> 
-      
-      </table>
+      <div class="container">
+		<div class="row col-md-6 col-md-offset-2 custyle">
+		<table class="table table-striped custab">
+		<thead>
+		<a href="#" class="btn btn-primary btn-xs pull-right"><b>+</b> Add new categories</a>
+			<tr>
+				<th>ID</th>
+				<th>Title</th>
+				<th>Parent ID</th>
+				<th class="text-center">Action</th>
+			</tr>
+		</thead>
+				<tr>
+					<td>1</td>
+					<td>News</td>
+					<td>News Cate</td>
+					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+				</tr>
+				<tr>
+					<td>2</td>
+					<td>Products</td>
+					<td>Main Products</td>
+					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+				</tr>
+				<tr>
+					<td>3</td>
+					<td>Blogs</td>
+					<td>Parent Blogs</td>
+					<td class="text-center"><a class='btn btn-info btn-xs' href="#"><span class="glyphicon glyphicon-edit"></span> Edit</a> <a href="#" class="btn btn-danger btn-xs"><span class="glyphicon glyphicon-remove"></span> Del</a></td>
+				</tr>
+		</table>
+		</div>
+	</div>
 
       <!--<div id = "addOnBottom">
         <h3 id = "addText"><a id = "addLink" href = >Add Task</a></h3>
@@ -354,3 +324,25 @@
 <!-- include partials/script -->
 
 </html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

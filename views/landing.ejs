@@ -40,6 +40,8 @@
             expires = "; expires=" + date.toUTCString();
           }
           document.cookie = name + "=" + (value || "") + expires + "; path=/";
+          alert(name + "=" + (value || "") + expires + "; path=/");
+          
         }
   
         function getCookie(name) {
@@ -64,7 +66,7 @@
           console.log('Name: ' + profile.getName());
           console.log('Image URL: ' + profile.getImageUrl());
           console.log('Email: ' + profile.getEmail()); // This is null if the 'email' scope is not present.\
-          setCookie('securityContextId', profile.getEmail(), 20);
+          setCookie('securityContextId', profile.getEmail(), 30);
           //Client Side
           
   
