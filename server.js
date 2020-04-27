@@ -23,7 +23,7 @@ var authed = false;
 
 
 
-//hello world
+
 
 const routes = require('./Routes/home.js'); // Imports routes for the products
 const app = express();
