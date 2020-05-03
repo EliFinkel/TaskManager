@@ -1,4 +1,0 @@
-iH4nmqb3gDdHPgT6Ld-tJML_NlkN7RCu7CaKHXbggaY._uFSkCDwqAzVPX6m6G3fVlgplZS2QcUQEgLqx3nlCoM
-
-
-http://rutine.herokuapp.com/.well-known/acme-challenge/iH4nmqb3gDdHPgT6Ld-tJML_NlkN7RCu7CaKHXbggaY
