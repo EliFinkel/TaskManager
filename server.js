@@ -7,7 +7,7 @@ const cookieSession = require('cookie-session');
 const queryString = require('query-string');
 const path = require('path');
 const axios = require('axios');
-
+const config = require('config');
 const { google } = require('googleapis');
 var session = require('express-session');
 //Security Block
@@ -37,12 +37,12 @@ app.use(bodyParser.urlencoded({
   extended: true
 }));
 
-
+const mongoConfig = config.get('rutine.mongoConfig');
 // Set up mongoose connection
 const mongoose = require('mongoose');
 
-mongoose.connect('mongodb+srv://eli:eli16821@card-qxsw8.mongodb.net/Tasks?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true  })
-
+//mongoose.connect('mongodb+srv://eli:eli16821@card-qxsw8.mongodb.net/Tasks?retryWrites=true&w=majority', { useNewUrlParser: true, useUnifiedTopology: true  })
+mongoose.connect(mongoConfig.host, { useNewUrlParser: true, useUnifiedTopology: true  })
 mongoose.Promise = global.Promise;
 
 mongoose.set('useFindAndModify', false);

@@ -1,0 +1,25 @@
+{
+    "rutine": {
+        "googleConfig":{
+
+        },
+        "mongoConfig":{
+            "host": "mongodb+srv://eli:eli16821@card-qxsw8.mongodb.net/Tasks?retryWrites=true&w=majority"
+        },
+        "twilioConfig":{
+
+        }
+        
+    
+    
+    }
+
+
+
+
+
+
+
+
+
+}
