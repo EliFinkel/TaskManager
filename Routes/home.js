@@ -2,7 +2,7 @@ const express = require('express');
 const router = express.Router();
 const cardController = require('../controllers/cardController.js');
 const { google } = require('googleapis');
-
+const config = require('config');
 
 
 
@@ -102,17 +102,17 @@ router.get('/auth/google/callback', function (req, res) {
 });
 
 
-
+const twilioConfig = config.get("rutine.twilioConfig");
 function sendMessage(userMessage){
-    const accountSid = 'AC97874c35dc05a571cd9ce712d46d9361';
-    const authToken = '89db1e88f70122b6c660bd447e8484bc';
+    const accountSid = twilioConfig.accountSid;
+    const authToken = twilioConfig.authToken;
     const client = require('twilio')(accountSid, authToken);
 
     client.messages
     .create({
         body: userMessage,
-        from: '+19384448988',
-        to: '+16102903339'
+        from: twilioConfig.twilioNumber,
+        to: twilioConfig.phoneNumber
     })
     .then(message => console.log(message.sid));
 

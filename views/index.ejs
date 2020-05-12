@@ -27,7 +27,11 @@
         <link rel="stylesheet" href="./stylesheets/style.css">
         <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
     <!--===============================================================================================-->
-    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <meta name="google-signin-client_id" content="930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com">
+    <script src="https://apis.google.com/js/platform.js" async defer></script>
+
 
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
@@ -73,7 +77,7 @@
       }
 
 
-      thead{
+      th{
         background-color:#029a62;
       }
 
@@ -202,6 +206,19 @@
 
       
       </style>
+
+<script>
+function signOut() {
+  var auth2 = gapi.auth2.getAuthInstance();
+  auth2.signOut().then(function () {
+  console.log('User signed out.');
+  setCookie('securityContextId', '', 0)
+  });
+
+} 
+
+
+</script>
 </head>
 <body>
 
@@ -231,7 +248,7 @@
             <li ><img id="profileImg" src="../img/img_avatar.png" alt="Avatar" width = "50px" height = "50px"></li>
             <div class="dropdown-content">
               <a href="/settings">settings</a>
-              <a href="/logOut">log out</a>
+              <div onclick = "signOut()"><a href = "/">log out</a></div>
               
             </div>
           </div>
@@ -264,7 +281,7 @@
             <th class = "top"> 
               Task
           </th>
-              <th class = "top"></th>
+              <th class = "top">Class</th>
                   
               
               

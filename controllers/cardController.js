@@ -108,9 +108,9 @@ function extractCookieValue(cookieString, cookieName){
 exports.getTasks = async (req, res) => {
     var cookieString = req.headers.cookie;
 
-    console.log("CookieString: " + cookieString);
+    //console.log("CookieString: " + cookieString);
     var email = extractCookieValue(cookieString, "securityContextId");
-    console.log("Email: " + email);
+    //console.log("Email: " + email);
     //console.log("Email: " + email); 
     
     if(email == null || email.length < 10){

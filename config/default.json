@@ -1,12 +1,17 @@
 {
     "rutine": {
         "googleConfig":{
-
+            "clientId": "930100384443-9208pp2f61p0v1vvs31lc8mb0cafv5jm.apps.googleusercontent.com",
+            "clientSecret": "DqVuV9IU6jO_bPAXHN0whbd9"
         },
         "mongoConfig":{
             "host": "mongodb+srv://eli:eli16821@card-qxsw8.mongodb.net/Tasks?retryWrites=true&w=majority"
         },
         "twilioConfig":{
+            "acountSid": "AC97874c35dc05a571cd9ce712d46d9361",
+            "authToken": "89db1e88f70122b6c660bd447e8484bc",
+            "phoneNumber": "+16102903339",
+            "twilioNumber": "+19384448988"
 
         }
         

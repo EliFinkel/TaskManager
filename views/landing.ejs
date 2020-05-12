@@ -40,7 +40,7 @@
             expires = "; expires=" + date.toUTCString();
           }
           document.cookie = name + "=" + (value || "") + expires + "; path=/";
-          alert(name + "=" + (value || "") + expires + "; path=/");
+          //alert(name + "=" + (value || "") + expires + "; path=/");
           
         }
   
@@ -93,9 +93,13 @@
         }
 
         #signOut{
-            height:36px;
-            background-color:white;
+            height:36.5px;
+            background-color:#ffffff;
+            text-align:center;
         }
+
+     
+
 
     </style>
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
@@ -125,7 +129,7 @@
                             <div class="main-menu  d-none d-lg-block text-center">
                                 <nav>
                                     <ul id="navigation">
-                                        <li><a class="active" href="/home">home</a></li>
+                                        <li><a class="active" href="/home">My Tasks</a></li>
                                         <li><a href="#about">about</a></li>
                                         <li><a href="#contact">contact</a></li>
                                 
@@ -136,8 +140,8 @@
                         <div class="col-lg-2 d-none d-lg-block">
                             <div class="log_chat_area d-flex align-items-end">
                                 <!--<a href="/newLogin" data-scroll-nav="0" class="say_hi">Login With Google</a>-->
-                                <div class="g-signin2" data-onsuccess="onSignIn"></div>
-                                <button id = "signOut" onclick="signOut()">SignOut</button>
+                                <div id = "signin" class="g-signin2" data-onsuccess="onSignIn"></div>
+                              <button onclick="signOut()">SignOut</button>
                             </div>
                             
                         </div>
