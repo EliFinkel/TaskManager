@@ -31,6 +31,12 @@
     <link rel="stylesheet" href="css/slick.css">
     <link rel="stylesheet" href="css/slicknav.css">
     <link rel="stylesheet" href="css/style.css">
+
+
+
+
+    
+
     <script>
         function setCookie(name, value, exp){
           var expires = "";
@@ -103,9 +109,16 @@
 
     </style>
     <!-- <link rel="stylesheet" href="css/responsive.css"> -->
+
+
+
+
+    
 </head>
 
 <body>
+
+    
     <!--[if lte IE 9]>
             <p class="browserupgrade">You are using an <strong>outdated</strong> browser. Please <a href="https://browsehappy.com/">upgrade your browser</a> to improve your experience and security.</p>
         <![endif]-->
@@ -130,7 +143,7 @@
                                 <nav>
                                     <ul id="navigation">
                                         <li><a class="active" href="/home">My Tasks</a></li>
-                                        <li><a href="#about">about</a></li>
+                                       <li><a href="#">about</a></li>
                                         <li><a href="#contact">contact</a></li>
                                 
                                     </ul>
@@ -142,6 +155,7 @@
                                 <!--<a href="/newLogin" data-scroll-nav="0" class="say_hi">Login With Google</a>-->
                                 <div id = "signin" class="g-signin2" data-onsuccess="onSignIn"></div>
                               <button onclick="signOut()">SignOut</button>
+                                
                             </div>
                             
                         </div>
@@ -176,7 +190,7 @@
 
     <!-- service_area  -->
 
-    <section id = "about">
+  <!--<section id = "about">
     <div class="service_area">
         <div class="container">
             <div class="row justify-content-center">
@@ -218,7 +232,7 @@
             </div>
         </div>
     </div>
-</section>
+</section>-->
     <!--/ service_area  -->
 <!--
     <div class="about_area">
@@ -509,6 +523,8 @@
         </div>
     </div>
     <!-- /testimonial_area  -->
+
+    
 <section id = "contact">    
     <div data-scroll-index="0" class="get_in_tauch_area">
         <div class="container">
@@ -520,6 +536,12 @@
                     </div>
                 </div>
             </div>
+
+
+
+         
+
+
             <div class="row justify-content-center">
                 <div class="col-lg-8">
                     <div class="touch_form">
@@ -597,6 +619,35 @@
         </div>
         <div class="copy-right_text">
             <div class="container">
+                <h2>Add React in One Minute</h2>
+    <p>This page demonstrates using React with no build tooling.</p>
+    <p>React is loaded as a script tag.</p>
+
+    <p>
+      This is the first comment.
+      <!-- We will put our React component inside this div. -->
+      
+    </p>
+
+    <p>
+      This is the second comment.
+      <!-- We will put our React component inside this div. -->
+      
+    </p>
+
+    <p>
+      This is the third comment.
+      <!-- We will put our React component inside this div. -->
+      
+
+      <div class="like_button_container" style="background-color: white; color:black; " data-commentid="4"></div>
+    </p>
+    
+
+
+
+
+
                 <div class="footer_border"></div>
                 <div class="row">
                     <div class="col-xl-12">
@@ -640,6 +691,10 @@ Copyright &copy;<script>document.write(new Date().getFullYear());</script> All r
     <script src="js/mail-script.js"></script>
 
     <script src="js/main.js"></script>
+    <script src="https://unpkg.com/react@16.4.1/umd/react.production.min.js"></script>
+    <script src="https://unpkg.com/react-dom@16.4.1/umd/react-dom.production.min.js"></script> 
+    <script src="../react/components/likeButton.js"></script>
+    <script src="../react/components/aboutComponent.js"></script>
 </body>
 
 </html>

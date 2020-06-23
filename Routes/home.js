@@ -34,6 +34,9 @@ router.get('/logOut', (req,res) => {
     res.redirect('/');
 })
 
+
+
+
 router.get('/projects', cardController.getProjectView);
 //TODO fix error with id
 
