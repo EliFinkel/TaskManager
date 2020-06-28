@@ -151,7 +151,7 @@ exports.getTask = function (req, res){
        // console.log(`The task is ${task}`);
         let date = moment().format('dddd');
         console.log(task);
-        res.render('otherUpdate', {task, date});
+        res.render('update', {task, date});
         //res.send(task);
     });
 }
@@ -187,7 +187,7 @@ exports.updateTaskPage = async (req, res) => {
 
 exports.createTaskPage = function (req, res){
     let date = moment().format('dddd');
-    res.render('newAdd', {date});
+    res.render('add', {date});
 }
 
 exports.getLoginPage = function (req, res){
