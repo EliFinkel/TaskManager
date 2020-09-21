@@ -31,9 +31,11 @@ const routes = require('./Routes/home.js'); // Imports routes for the products
 const app = express();
 
 // view engine setup
-app.set('views', path.join(__dirname, 'views'));
+app.set('views', path.join(__dirname, 'views/ejs'));
 app.set('view engine', 'ejs');
 
+
+app.use('/static', express.static('public'))
 
 app.use(bodyParser.urlencoded({
   extended: true

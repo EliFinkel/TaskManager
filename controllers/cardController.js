@@ -18,12 +18,6 @@ var authed = false;
 
 
 
-
-
-
-
-
-
 exports.createTask = async (req, res) => {
     var cookieString = req.headers.cookie;
     var email = extractCookieValue(cookieString, "securityContextId");
@@ -34,6 +28,7 @@ exports.createTask = async (req, res) => {
             notes: req.body.notes,
             dueDate: req.body.dueDate,
             status: req.body.status,
+            project: req.body.project,
             emailId: email
 
         }
@@ -107,15 +102,18 @@ function extractCookieValue(cookieString, cookieName){
 //Query the database and display saved tasks
 exports.getTasks = async (req, res) => {
     var cookieString = req.headers.cookie;
-
-    //console.log("CookieString: " + cookieString);
+    if(!cookieString){
+        res.redirect('/login'); 
+        console.log("Something is wrong with your email!");
+    }
+    
     var email = extractCookieValue(cookieString, "securityContextId");
     //console.log("Email: " + email);
     //console.log("Email: " + email); 
-    
+  
     if(email == null || email.length < 10){
-        res.redirect('/')
-        console.log("Something is wrong with your email!")
+        res.redirect('/login');
+        console.log("Something is wrong with your email!");
     }
     else{
         
@@ -167,8 +165,7 @@ exports.updateTask = function (req, res) {
             status: req.body.status
         });
 
-    console.log(task);
-    console.log(req.params.id);
+        
     cardModel.findOneAndUpdate(req.params.id, {$set: req.body}, function (err, task) {
 
         console.log(task);  
@@ -192,7 +189,7 @@ exports.createTaskPage = function (req, res){
 
 exports.getLoginPage = function (req, res){
 
-const stringifiedParams = queryString.stringify({
+ /*const stringifiedParams = queryString.stringify({
     client_id: '673316106874-uadmbsdhpnildop9bqqjfiennl3b5lec.apps.googleusercontent.com',
     redirect_uri: 'http://10.1.10.158:8080',
     scope: [
@@ -202,10 +199,14 @@ const stringifiedParams = queryString.stringify({
     response_type: 'code',
     access_type: 'offline',
     prompt: 'consent',
-  });
+ });
   
     const googleLoginUrl = `https://accounts.google.com/o/oauth2/v2/auth?${stringifiedParams}`;
-    res.render('login', googleLoginUrl);
+    res.render('login', googleLoginUrl);*/
+    res.render('login');
+
+
+
 }
 
 
@@ -228,7 +229,7 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
   };
 
   exports.getLandingPage = (req,res) => {
-      res.render('landing');
+      res.render('landingPage');
   }
 
 
@@ -254,8 +255,16 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
 
 /*exports.sendReminder = (req,res) => {
    
+
+
+
+
 }*/
 
+
+exports.getHomePage = (req,res) => {
+    res.render('homePage.ejs');
+}
 
 
 
@@ -274,3 +283,8 @@ function sendMessage(userMessage){
 
 
 }
+
+
+
+
+

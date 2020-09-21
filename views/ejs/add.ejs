@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+
+
+  <title>Routine</title>
+
+  <%- include ('./partials/newHeaders.ejs') %>
+
+
+</head>
+
+<body id="page-top">
+
+  <!-- Page Wrapper -->
+  <div id="wrapper">
+
+  <%- include ('./partials/newGoogle.ejs') %>
+  <%- include ('./partials/navBar.ejs') %>
+  
+   <!-- Begin Page Content -->
+   <div class="container-fluid">
+
+    <!-- Page Heading -->
+    <h1 class="h3 mb-2 text-gray-800">Tasks</h1>
+    <br>
+ 
+
+ 
+    <div class="card shadow mb-4">
+      <div class="card-header py-3">
+        <h6 class="m-0 font-weight-bold text-primary">Add Task</h6>
+      </div>
+      <div class="card-body">
+        <div class="table-responsive">
+            <form action="/add" method="POST" class="contact1-form validate-form" id = "form" autocomplete="off">
+
+			<div class = "container">
+                
+				<div class = "row">
+                    <div class = "col-md-8 col-lg-8">
+                        <div class = "form-group" data-validate = "Name is required">
+                            <label for="title">Title:</label>
+                            <input id = "title" class="form-control" type="text" name="title" placeholder="Title" >
+                        </div>
+                    </div>
+                </div>
+          
+
+				<div class = "row">
+                    <div class = "col-md-8 col-lg-8">
+                        <div class = "form-group" data-validate = "Valid email is required: ex@abc.xyz">
+                            <label for="description">Desription:</label>
+                            <input id = "description" class="form-control" type="text" name="description" placeholder="Description" >
+                        </div>
+                    </div>
+                </div> 
+
+				<div class = "row">
+                    <div class = "col-md-8 col-lg-8">
+                        <div class = "form-group" data-validate = "Subject is required">
+                            <label for="date">Date:</label>
+                            <input id = "date" class="form-control" type="text" name="date" placeholder="Default is current date">
+                        </div>
+                    </div>
+                </div>
+
+				<div class = "row">
+                    <div class = "col-md-8 col-lg-8">
+                        <div class = "form-group" data-validate = "Due Date is required">
+                            <label for="dueDate">DueDate:</label>
+                            <input id = "dueDate" class="form-control" type="text" name="dueDate" placeholder="Due Date">
+                        </div>
+                    </div>
+                </div>
+
+				<div class = "row">
+                    <div class = "col-md-8 col-lg-8">
+                        <div class = "form-group" data-validate = "Message is required">
+                            <label for="notes">Notes:</label>
+                            <textarea id = "notes" class="form-control" name="notes" placeholder="Notes"></textarea>
+                        </div>
+                    </div>
+                </div>
+
+				<div class = "row">
+                    <div class = "form-group">
+					    <input type="submit" class="btn btn-success">
+                    </div>
+                </div>
+            </div>
+			</form>
+
+
+          
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- /.container-fluid -->
+       
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+      <!-- Footer -->
+      <footer class="sticky-footer bg-white">
+        <div class="container my-auto">
+          <div class="copyright text-center my-auto">
+            <span>Copyright &copy; Routine 2020</span>
+          </div>
+        </div>
+      </footer>
+      <!-- End of Footer -->
+
+    </div>
+    <!-- End of Content Wrapper -->
+
+  </div>
+  <!-- End of Page Wrapper -->
+
+  <!-- Scroll to Top Button-->
+  <a class="scroll-to-top rounded" href="#page-top">
+    <i class="fas fa-angle-up"></i>
+  </a>
+
+  <!-- Logout Modal-->
+  <div class="modal fade" id="logoutModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+          <button class="close" type="button" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">×</span>
+          </button>
+        </div>
+        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
+        <div class="modal-footer">
+          <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+          <a class="btn btn-primary" href="login.html">Logout</a>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  <%- include ('./partials/newFooters.ejs') %>
+</body>
+
+</html>

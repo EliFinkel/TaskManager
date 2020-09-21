@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<title>Rutine - Add Task</title>
+	<%- include ('./partials/headers.ejs') %>
+
+	<%- include ('./partials/mainStyles.ejs') %>
+	<link rel="stylesheet" href="../front-end-folders/css/detail.css">
+    
+
+
+
+</head>
+<body>
+	<nav class="navbar navbar-default" id = "nav">
+		<div class="container">
+		  
+		  <div class="navbar-header">
+			<button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#myNavbar">
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>
+			  <span class="icon-bar"></span>                        
+			</button>
+		   
+			<a class="navbar-brand" href="/logout" id = "title">Rutine</a>
+			
+		  </div>
+		  
+		  <div class="collapse navbar-collapse" id="myNavbar">
+			<ul class="nav navbar-nav navbar-right">
+			  <li id="home"><a id = "homeBtn" href="/home">home</a></li>
+			  <li id="add"><a id = "createBtn" href="/add">add task</a></li>
+			  
+			  <div class="dropdown">
+				<li ><img id="profileImg" src="../front-end-folders/img/img_avatar.png" alt="Avatar" width = "50px" height = "50px"></li>
+				<div class="dropdown-content">
+				  <a href="/settings">settings</a>
+				  <a href="/logOut">log Out</a>
+				  
+				</div>
+			  </div>
+			  
+			</ul>
+		  </div>
+		</div>
+	  
+	   
+	  </nav>
+
+	<div class="contact1" id = 'mainContent'>
+		<div class="container-contact1">
+			<div class="contact1-pic js-tilt" data-tilt>
+				<img id = "calImg" src="../front-end-folders/images/img-01.png" alt="IMG" width = "800px" height="300px">
+			</div>
+			<form action="/add" method="POST" class="contact1-form validate-form" id = "form" autocomplete="off">
+		
+				<span class="contact1-form-title">
+					Add Task
+				</span>
+			
+				<div class="wrap-input1 validate-input" data-validate = "Name is required">
+					<input class="input1" type="text" name="title" placeholder="Class">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input1" type="text" name="description" placeholder="Description">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Valid email is required: ex@abc.xyz">
+					<input class="input1" type="text" name="project" placeholder="Project">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Subject is required">
+					<input class="input1" type="text" name="date" placeholder="Default is current date" value = '<%=date%>'>
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Due Date is required">
+					<input class="input1" type="text" name="dueDate" placeholder="Due Date">
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="wrap-input1 validate-input" data-validate = "Message is required">
+					<textarea class="input1" name="notes" placeholder="Notes"></textarea>
+					<span class="shadow-input1"></span>
+				</div>
+
+				<div class="container-contact1-form-btn">
+					<input type="submit" class="btn btn-success">
+				</div>
+			</form>
+		</div>
+	</div>
+
+
+
+
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
+
+
+<!-- Global site tag (gtag.js) - Google Analytics -->
+<!--<script async src="https://www.googletagmanager.com/gtag/js?id=UA-23581568-13"></script>-->
+
+
+</body>
+</html>front-end-folders/
