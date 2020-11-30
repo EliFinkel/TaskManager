@@ -7,6 +7,29 @@
   <title>Routine</title>
 
   <%- include ('./partials/newHeaders.ejs') %>
+  <style>.example_a {
+    color: #fff !important;
+    text-transform: uppercase;
+    text-decoration: none;
+    background: #3A60D0;
+    padding: 20px;
+    border-radius: 5px;
+    display: inline-block;
+    border: none;
+    transition: all 0.4s ease 0s;
+    }
+    
+    .example_a:hover {
+background: #434343;
+letter-spacing: 1px;
+-webkit-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+-moz-box-shadow: 0px 5px 40px -10px rgba(0,0,0,0.57);
+box-shadow: 5px 40px -10px rgba(0,0,0,0.57);
+transition: all 0.4s ease 0s;
+}
+    
+    
+    </style>
 
 
 </head>
@@ -41,9 +64,9 @@
                           <th>Task</th>
                           <th>Description</th>
                           <th>DueDate</th>
-                          <th>Status</th>
                           <th>Start date</th>
-                          <th>Notes</th>
+                          <th>End Date</th>
+                          
                       </tr>
                   </thead>
                   <tbody>
@@ -53,17 +76,8 @@
                               <td id = "description"><%=task.description%></td>
                               <td id= "dueDate"><%=task.dueDate%></td>
                               <td id= "dueDate">
-                                <form action="/home">
-                                    <select id="status" name="status" for = "status" onchange="this.form.submit()">
-                                        <option id="WorkingOnIt">Working On It</option>
-                                        <option id="Stuck">Stuck</option>
-                                        <option id="Completed">Completed</option>
-            
-                                    </select>
-                                </form>
-                              </td>
                               <td id = "date"><%=task.date%></td>
-                              <td id = "notes"><%=task.notes%></td>
+                            
                               
                               
                       
@@ -76,6 +90,8 @@
                       <% })%> 
                   </tbody>
               </table>
+
+              <div class="button_cont" align="center"><a class="example_a" href="/add" rel="nofollow noopener">Add Task</a></div>
 
 
 

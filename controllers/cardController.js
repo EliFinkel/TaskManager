@@ -102,12 +102,13 @@ function extractCookieValue(cookieString, cookieName){
 //Query the database and display saved tasks
 exports.getTasks = async (req, res) => {
     var cookieString = req.headers.cookie;
+    var email = extractCookieValue(cookieString, "securityContextId");
     if(!cookieString){
         res.redirect('/login'); 
         console.log("Something is wrong with your email!");
     }
     
-    var email = extractCookieValue(cookieString, "securityContextId");
+    
     //console.log("Email: " + email);
     //console.log("Email: " + email); 
   
@@ -119,7 +120,7 @@ exports.getTasks = async (req, res) => {
         
         const tasks = await cardModel.find({emailId:  email});
     
-        res.render('index', {tasks});
+        res.render('index', {tasks, email});
     }
     
         
@@ -147,9 +148,11 @@ exports.getTask = function (req, res){
     cardModel.findById(req.params.id, function (err, task) {
         //if (err) return next(err);
        // console.log(`The task is ${task}`);
+       var cookieString = req.headers.cookie;
+        var email = extractCookieValue(cookieString, "securityContextId");
         let date = moment().format('dddd');
         console.log(task);
-        res.render('update', {task, date});
+        res.render('update', {task, date, email});
         //res.send(task);
     });
 }
@@ -184,7 +187,9 @@ exports.updateTaskPage = async (req, res) => {
 
 exports.createTaskPage = function (req, res){
     let date = moment().format('dddd');
-    res.render('add', {date});
+    var cookieString = req.headers.cookie;
+    var email = extractCookieValue(cookieString, "securityContextId");
+    res.render('add', {date, email});
 }
 
 exports.getLoginPage = function (req, res){
@@ -263,7 +268,9 @@ exports.getAccessTokenFromCode = async function getAccessTokenFromCode(code) {
 
 
 exports.getHomePage = (req,res) => {
-    res.render('homePage.ejs');
+    var cookieString = req.headers.cookie;
+    var email = extractCookieValue(cookieString, "securityContextId");
+    res.render('homePage.ejs', {email});
 }
 
 
