@@ -28,7 +28,7 @@
     "passport-google-oauth": "^2.0.0",
     "path": "^0.12.7",
     "promise": "^8.0.3",
-    "pug": "^2.0.4",
+    "pug": "^3.0.1",
     "query-string": "^6.11.0",
     "react": "^16.13.0",
     "start": "^5.1.0",
